@@ -11,7 +11,17 @@
 
 ---
 
-### 二、Three.js的配置
+### 二、克隆本项目
+
+使用以下命令将本项目克隆到本地，并进入项目目录：
+```
+git clone https://github.com/BugMaker888/sheep.git
+cd sheep/
+```
+
+---
+
+### 三、Three.js的配置
 
 `Three.js`是一个开源的网页3D渲染库，项目地址为：[https://github.com/mrdoob/three.js](https://github.com/mrdoob/three.js) 。
 
@@ -33,7 +43,7 @@ npm start
 
 ---
 
-### 三、mitmproxy的配置
+### 四、mitmproxy的配置
 
 `mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
 
@@ -75,8 +85,9 @@ mitmweb -p 6666 -s sheep.py
 
 因为`sheep.py`会将地图数据保存到`three.js/examples/map_data.js`里，如果`mitmproxy`报错的话，需要修改`sheep.py`里的路径。
 
+---
 
-### 四、游戏数据
+### 五、游戏数据
 
 文件`three.js/examples/map_data.js`里面保存着游戏的关卡数据。
 
