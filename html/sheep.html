@@ -18,9 +18,9 @@
     </head>
 
     <body>
-        <!--div id="info">
-            <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - orbit controls
-        </div-->
+        <div id="info">
+            <a id="undo" href="javascript:void(0)">撤销</a>
+        </div>
 
         <!-- Import maps polyfill -->
         <!-- Remove this when import maps will be widely supported -->
@@ -45,10 +45,13 @@
             let camera, controls, scene, renderer;
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
+            const removed = [];
 
             init();
             //render(); // remove when using next line for animation loop (requestAnimationFrame)
             animate();
+
+            bindEvent();
 
             function init() {
 
@@ -193,6 +196,7 @@
                     var object = intersects[0].object;
                     var block_data = map_data['levelData'][object.map_layer][object.map_layer_index];
                     console.log(`移除方块 >> 层数:${block_data['layerNum']}, 坐标:(${block_data['rolNum']}, ${block_data['rowNum']}), 类型:${block_data['type']}`);
+                    removed.push(object);
                     scene.remove(object);
                 }
             }
@@ -211,6 +215,17 @@
 
                 renderer.render( scene, camera );
 
+            }
+
+            function undo() {
+                const object = removed.pop();
+                if (object) {
+                    scene.add(object);
+                }
+            }
+
+            function bindEvent(){
+                document.getElementById('undo').onclick = undo;
             }
 
         </script>
