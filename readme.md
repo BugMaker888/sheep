@@ -49,9 +49,9 @@ npm start
 
 #### 1、安装
 
-安装Python3后，执行以下命令安装mitmproxy：
+安装Python3后，执行以下命令安装mitmproxy与pyExecJs：
 ```
-pip install mitmproxy
+pip install mitmproxy pyExecJs
 ```
 
 #### 2、启动

@@ -8,7 +8,7 @@ class Sheep():
 
     def __init__(self):
         self.seed = [0, 0, 0, 0]
-        self.js_code = open("shuffle.js").read()
+        self.js_code = open("shuffle.js",encoding='utf-8').read()
         self.map_data_path = "./map_data.txt"
 
     def response(self, flow):
