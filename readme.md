@@ -70,7 +70,7 @@ mitmweb -p 6666 -s sheep.py
 
 接下来使用手机连接电脑的ip以及使用`6666`端口作为代理，就可以抓包了。
 
-使用手机浏览器访问 [http://mitm.it](http://mitm.it) 安装要安装`mitmproxy`的证书。
+使用手机浏览器访问 [http://mitm.it](http://mitm.it) 安装`mitmproxy`的证书。
 
 苹果手机需要在 <kbd>设置</kbd> - <kbd>通用</kbd> - <kbd>关于本机</kbd> - <kbd>证书信任设置</kbd> 里信任证书。
 
@@ -127,6 +127,7 @@ mitmweb -p 6666 -s sheep.py
         "4",
         "5"
     ]
+}
 ```
 
-有了这些数据就可以尝试写算法求解了。
+地图原点在左上角，方块的大小是`8 * 8`，有了这些数据就可以尝试写算法求解了。
