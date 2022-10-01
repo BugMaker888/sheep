@@ -19,6 +19,8 @@ git clone https://github.com/BugMaker888/sheep.git
 cd sheep/
 ```
 
+> MacOS系统使用终端执行，Windows系统使用Powershell。
+
 ---
 
 ### 三、Three.js的配置
@@ -70,6 +72,8 @@ mitmweb -p 6666 -s sheep.py
 
 接下来使用手机连接电脑的ip以及使用`6666`端口作为代理，就可以抓包了。
 
+设置代理可以参考视频教程 [【4分钟教会你Charles抓包设置抓取电脑HTTPS以及IOS手机抓包-哔哩哔哩】](https://b23.tv/S0d8iYa) 两分钟的地方。
+
 使用手机浏览器访问 [http://mitm.it](http://mitm.it) 安装`mitmproxy`的证书。
 
 苹果手机需要在 <kbd>设置</kbd> - <kbd>通用</kbd> - <kbd>关于本机</kbd> - <kbd>证书信任设置</kbd> 里信任证书。
@@ -83,7 +87,7 @@ mitmweb -p 6666 -s sheep.py
 
 手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。
 
-因为`sheep.py`会将地图数据保存到`three.js/examples/map_data.js`里，如果`mitmproxy`报错的话，需要修改`sheep.py`里的路径。
+> 因为`sheep.py`默认将地图数据保存到`./three.js/examples/map_data.js`里，如果`three.js/`没放到`sheep/`目录里的话，需要修改`sheep.py`里的路径。
 
 ---
 
