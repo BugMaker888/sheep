@@ -46,4 +46,3 @@ function shuffle(array, seed) {
     array.reverse();
     return array;
 }
-

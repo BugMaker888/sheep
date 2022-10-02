@@ -1,3 +1,4 @@
+## PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)
 
 ### 一、运行环境
 
@@ -5,9 +6,17 @@
 
 推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
 
-#### 2、Node.js
+#### 2、~~Node.js~~ web服务 + PHP
 
-为了运行`three.js`网页，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。
+~~为了运行`three.js`网页，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。~~
+
+使用`nginx`或`apache`等 web 服务搭配 php 环境以及 sqlite 数据库，具体可以百度。
+
+搭建好 web 服务环境后需要将`sheep.py`脚本中的服务器地址换成你自己的。
+
+用我的也行，不过加载可能比较慢，关卡数据加载失败的话可以多刷新几次。
+
+本人因为想将3d地图放在 vps 上，所以使用的是 nginx 虚拟主机（域名）搭配 php 环境，mitmproxy 抓包放在了本地电脑上。
 
 ---
 
@@ -15,7 +24,7 @@
 
 使用以下命令将本项目克隆到本地，并进入项目目录：
 ```
-git clone https://github.com/BugMaker888/sheep.git
+git clone https://github.com/longhuan1999/sheep.git
 cd sheep/
 ```
 
@@ -27,9 +36,11 @@ cd sheep/
 
 `Three.js`是一个开源的网页3D渲染库，项目地址为：[https://github.com/mrdoob/three.js](https://github.com/mrdoob/three.js) 。
 
-#### 1、安装
+相关文件已集成到`html`目录中，将 html 中的文件放在网站根目录下即可。
 
-按顺序逐行执行以下命令：
+#### ~~1、安装~~
+
+~~按顺序逐行执行以下命令：~~
 ```
 git clone https://github.com/mrdoob/three.js.git
 cd three.js/
@@ -37,17 +48,21 @@ npm install
 npm start
 ```
 
-打开 [http://localhost:8080/examples/](http://localhost:8080/examples/) 就可以看到示例了，我的3d地图就是拿其中一个示例改的。
+~~打开 [http://localhost:8080/examples/](http://localhost:8080/examples/) 就可以看到示例了，我的3d地图就是拿其中一个示例改的。~~
+
 
 #### 2、使用
 
-把本项目下的`html`目录里的所有内容拷贝到`three.js/examples/`目录里，这样就可以访问 [http://localhost:8080/examples/sheep.html](http://localhost:8080/examples/sheep.html) 了。
+~~把本项目下的`html`目录里的所有内容拷贝到`three.js/examples/`目录里，这样就可以访问 [http://localhost:8080/examples/sheep.html](http://localhost:8080/examples/sheep.html) 了。~~
+
 
 ---
 
 ### 四、mitmproxy的配置
 
 `mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
+
+目测不支持国外vps抓包，游戏会检测ip的地理位置。
 
 #### 1、安装
 
@@ -58,11 +73,18 @@ pip install mitmproxy pyExecJs
 
 #### 2、启动
 
-因为`three.js`和`mitmproxy`都默认使用`8080`端口，所以需要改一下端口运行。
+~~因为`three.js`和`mitmproxy`都默认使用`8080`端口，所以需要改一下端口运行。~~
 
 将终端切换到本项目目录，执行以下命令加载`sheep.py`插件：
 ```
 mitmweb -p 6666 -s sheep.py
+# 默认代理端口是8080，默认web端口是8081，如果出现端口占用情况，参考以下参数
+# -p [代理端口]
+# --web-port [web端口]
+# --web-iface 或 --web-host [web主机名]
+# 示例：
+mitmweb -p 9998 -s sheep.py --web-port 9999 --web-iface 0.0.0.0
+mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 ```
 
 执行后浏览器会弹出一个抓包的网页界面。
@@ -83,17 +105,25 @@ mitmweb -p 6666 -s sheep.py
 
 #### 4、使用
 
-因为关卡数据每天只会请求一次，所以可以先删除游戏再重新进入。
+~~因为关卡数据每天只会请求一次，所以可以先删除游戏再重新进入。~~
 
-手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。
+~~手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。~~
 
-> 因为`sheep.py`默认将地图数据保存到`./three.js/examples/map_data.js`里，如果`three.js/`没放到`sheep/`目录里的话，需要修改`sheep.py`里的路径。
+> ~~因为`sheep.py`默认将地图数据保存到`./three.js/examples/map_data.js`里，如果`three.js/`没放到`sheep/`目录里的话，需要修改`sheep.py`里的路径。~~
+
+目测不支持抖音小游戏版抓包，微信小游戏版支持。
+
+主页面的`再次挑战`会刷新地图，游戏失败后的`重新挑战`不会刷新地图。
+
+你可以在命令行的输出中看出地图是否刷新，3d地图的网页地址也会在命令行输出：
+
+![image](https://user-images.githubusercontent.com/43313501/193447310-8bc58d9b-8548-4c23-a98d-38c2e3804a4f.png)
 
 ---
 
 ### 五、游戏数据
 
-文件`three.js/examples/map_data.js`里面保存着游戏的关卡数据。
+文件`sheep_map/map_data.js`里面是游戏的关卡数据示例，本项目抓取的关卡地图数据保存在服务器端的 sqlite 文件中。
 
 大致说明一下字段的含义：
 
