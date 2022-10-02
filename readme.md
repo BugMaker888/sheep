@@ -32,6 +32,8 @@ cd sheep/
 
 `Three.js`是一个开源的网页3D渲染库，项目地址为：[https://github.com/mrdoob/three.js](https://github.com/mrdoob/three.js) 。
 
+相关文件已集成到`html`目录中，将 html 中的文件放在网站根目录下即可。
+
 #### ~~1、安装~~
 
 ~~按顺序逐行执行以下命令：~~
@@ -49,13 +51,14 @@ npm start
 
 ~~把本项目下的`html`目录里的所有内容拷贝到`three.js/examples/`目录里，这样就可以访问 [http://localhost:8080/examples/sheep.html](http://localhost:8080/examples/sheep.html) 了。~~
 
-相关文件已集成到`html`目录中，将 html 中的文件放在网站根目录下即可。
 
 ---
 
 ### 四、mitmproxy的配置
 
 `mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
+
+目测不支持国外vps抓包，游戏会检测ip的地理位置。
 
 #### 1、安装
 
@@ -103,6 +106,8 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 ~~手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。~~
 
 > ~~因为`sheep.py`默认将地图数据保存到`./three.js/examples/map_data.js`里，如果`three.js/`没放到`sheep/`目录里的话，需要修改`sheep.py`里的路径。~~
+
+目测不支持抖音小游戏版抓包，微信小游戏版支持。
 
 主页面的`再次挑战`会刷新地图，游戏失败后的`重新挑战`不会刷新地图。
 
