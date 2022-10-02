@@ -6,11 +6,11 @@
 
 推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
 
-#### ~~2、Node.js~~ web服务 + PHP
+#### 2、~~Node.js~~ web服务 + PHP
 
 ~~为了运行`three.js`网页，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。~~
 
-使用`nginx`或`pache`等 web 服务器搭配 php 环境以及 sqlite 数据库，具体可以百度。
+使用`nginx`或`apache`等 web 服务搭配 php 环境以及 sqlite 数据库，具体可以百度。
 
 搭建好 web 服务环境后需要将`sheep.py`脚本中的服务器地址换成你自己的。
 
