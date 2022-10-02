@@ -46,30 +46,3 @@ function shuffle(array, seed) {
     array.reverse();
     return array;
 }
-
-// 测试方法
-function test() {
-    var numbers = [
-        1, 1, 1,
-        2, 2, 2,
-        3, 3, 3,
-    ];
-    console.log(numbers);
-
-    var seed = [0, 0, 0, 0];
-    shuffle(numbers, seed);
-    console.log(numbers);
-
-    var type2name = {
-        1 : "🌱",
-        2 : "🥕",
-        3 : "🌽",
-    };
-    var names = [];
-    for (var i = 0; i < numbers.length; i++) {
-        names.push(type2name[numbers[i]]);
-    }
-    console.log(names);
-}
-
-//test()
