@@ -1,4 +1,5 @@
 from mitmproxy import ctx
+import requests
 import execjs
 import json
 import os
@@ -72,13 +73,14 @@ class Sheep():
                 index += 1
 
         # 保存地图数据
-        data_string = f"const map_data = {json.dumps(map_data, indent=4)};"
-        save_path = "./three.js/examples/map_data.js"
-        with open(save_path, "w") as f:
-            f.write(data_string)
-            f.close()
-
+        # data_string = json.dumps(map_data)
+        r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data), headers={'Content-Type': 'application/json'})
+        r_str = r.text
+        url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
+        url = "https://ylgy.endless084.top/%s"%url
+        print("当前地图地址：%s"%url)
+        #import webbrowser
+        #webbrowser.open(url, new=0, autoraise=True)
         print("==========================================")
 
 addons = [Sheep()]
-
