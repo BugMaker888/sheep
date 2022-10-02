@@ -6,11 +6,15 @@
 
 推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
 
-#### ~~2、Node.js~~
+#### ~~2、Node.js~~ web服务 + PHP
 
 ~~为了运行`three.js`网页，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。~~
 
-使用`nginx`或`pache`等 web 服务器搭配 php 环境，具体可以百度。
+使用`nginx`或`pache`等 web 服务器搭配 php 环境以及 sqlite 数据库，具体可以百度。
+
+搭建好 web 服务环境后需要将`sheep.py`脚本中的服务器地址换成你自己的。
+
+用我的也行，不过加载可能比较慢，关卡数据加载失败的话可以多刷新几次。
 
 本人因为想将3d地图放在 vps 上，所以使用的是 nginx 虚拟主机（域名）搭配 php 环境，mitmproxy 抓包放在了本地电脑上。
 
@@ -111,7 +115,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 主页面的`再次挑战`会刷新地图，游戏失败后的`重新挑战`不会刷新地图。
 
-你可以在命令行的输出中看出地图是否刷新，3d地图的地址也会在命令行输出：
+你可以在命令行的输出中看出地图是否刷新，3d地图的网页地址也会在命令行输出：
 
 ![image](https://user-images.githubusercontent.com/43313501/193447310-8bc58d9b-8548-4c23-a98d-38c2e3804a4f.png)
 
