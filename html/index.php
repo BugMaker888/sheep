@@ -39,21 +39,26 @@ EOF;
       }
 
       $req_json_str = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
-      //echo $req_json_str;
-      $sql2 = "INSERT INTO MAPS (MAP_INFO) VALUES ('$req_json_str')";
-      $ret2 = $db->exec($sql2);
-      $ret3 = $db->query("SELECT MAX(ID) from MAPS");
-      if(!$ret2){
-        echo "<script>window.alert('".$db->lastErrorMsg()."');</script>\n\t";
-        //echo $db->lastErrorMsg();
-      } else {
-        echo "<script>console.log('成功插入数据');</script>\n\t";
-        //echo "成功插入数据\n";
-        while($row = $ret3->fetchArray() ){
-          $ID = $row["MAX(ID)"];
-          echo "<a href='/sheep_map?id=$ID'>访问3d地图</a>\n\t";
-          echo "<script>window.location.href='/sheep_map?id=$ID';</script>\n";
+      //echo gettype($req_json_str);
+      if(strpos($req_json_str, "blockTypeData") !== false){
+        $sql2 = "INSERT INTO MAPS (MAP_INFO) VALUES ('$req_json_str')";
+        $ret2 = $db->exec($sql2);
+        $ret3 = $db->query("SELECT MAX(ID) from MAPS");
+        if(!$ret2){
+          echo "<script>window.alert('".$db->lastErrorMsg()."');</script>\n\t";
+          //echo $db->lastErrorMsg();
+        } else {
+          echo "<script>console.log('成功插入数据');</script>\n\t";
+          //echo "成功插入数据\n";
+          while($row = $ret3->fetchArray() ){
+            $ID = $row["MAX(ID)"];
+            echo "<a href='/sheep_map?id=$ID'>访问3d地图</a>\n\t";
+            echo "<script>window.location.href='/sheep_map?id=$ID';</script>\n";
+          }
         }
+      } else {
+        echo "<a href='/sheep_map'>访问3d地图</a>\n\t";
+        echo "<script>window.location.href='/sheep_map';</script>\n";
       }
       $db->close();
     ?>
