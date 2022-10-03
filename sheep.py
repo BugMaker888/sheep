@@ -77,8 +77,11 @@ class Sheep():
         r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data), headers={'Content-Type': 'application/json'})
         r_str = r.text
         url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
-        url = "https://ylgy.endless084.top/%s"%url
-        print("当前地图地址：%s"%url)
+        if "id" not in url:
+            print("3D地图生成失败！")
+        else:
+            url = "https://ylgy.endless084.top/%s"%url
+            print("当前关卡3D地图地址：%s"%url)
         #import webbrowser
         #webbrowser.open(url, new=0, autoraise=True)
         print("==========================================")
