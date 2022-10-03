@@ -19,7 +19,9 @@
 
     <body>
         <div id="info">
-            <a id="undo" href="javascript:void(0)">撤销</a>
+            <a id="undo" href="javascript:void(0)">【撤销移除】</a>
+            <a id="auto_solve" href="javascript:void(0)">【自动解答】</a>
+            <a id="single_step_solve" href="javascript:void(0)">【单步解答】</a>
         </div>
 
         <!-- Import maps polyfill -->
@@ -46,6 +48,11 @@
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
             const removed = [];
+
+            // 显示解答步骤的变量
+            var block_objects = {}
+            var solve_index = 0;
+            var highlight_mesh;
 
             init();
             //render(); // remove when using next line for animation loop (requestAnimationFrame)
@@ -134,7 +141,7 @@
                     for ( let j = 0; j < block_datas.length; j ++ ) {
 
                         var block_data = block_datas[j];
-                        console.log(`层数:${block_data['layerNum']}, 坐标:(${block_data['rolNum']}, ${block_data['rowNum']}), 类型:${block_data['type']}(${type2name[block_data['type']]})`);
+                        print_block_info(block_data, false);
 
                         // 创建方块
                         const materials = [material_side, material_side, material_blocks[block_data['type']-1], material_side, material_side, material_side];
@@ -147,7 +154,26 @@
                         mesh.map_layer = layer;
                         mesh.map_layer_index = j;
                         scene.add( mesh );
+                        block_objects[block_data['id']] = mesh;
                     }
+                }
+
+                if (map_data['oprations'] != null) {
+
+                    // 高亮指示器
+                    geometry = new THREE.BoxGeometry( 8, 2, 8 );
+                    const material = new THREE.MeshBasicMaterial({color:0xff0000, opacity:0.6, transparent:true})
+                    highlight_mesh = new THREE.Mesh(geometry, material);
+                    highlight_mesh.position.x = 1000;
+                    highlight_mesh.position.y = 1000;
+                    highlight_mesh.position.z = 1000;
+                    highlight_mesh.updateMatrix();
+                    highlight_mesh.matrixAutoUpdate = false;
+                    scene.add( highlight_mesh );
+
+                    var block_id = map_data['oprations'][solve_index];
+                    var block_object = block_objects[block_id];
+                    update_highlight_mesh(block_object);
                 }
 
                 // lights
@@ -195,7 +221,7 @@
                 if (intersects.length > 0) {
                     var object = intersects[0].object;
                     var block_data = map_data['levelData'][object.map_layer][object.map_layer_index];
-                    console.log(`移除方块 >> 层数:${block_data['layerNum']}, 坐标:(${block_data['rolNum']}, ${block_data['rowNum']}), 类型:${block_data['type']}`);
+                    print_block_info(block_data, true);
                     removed.push(object);
                     scene.remove(object);
                 }
@@ -217,6 +243,14 @@
 
             }
 
+            function print_block_info(block_data, is_remove) {
+                var info = `层数:${block_data['layerNum']}, 坐标:(${block_data['rolNum']}, ${block_data['rowNum']}), 类型:${block_data['type']}`
+                if (is_remove) {
+                    info = "移除方块 >> " + info;
+                }
+                console.log(info);
+            }
+
             function undo() {
                 const object = removed.pop();
                 if (object) {
@@ -224,8 +258,66 @@
                 }
             }
 
+            function update_highlight_mesh(object) {
+                highlight_mesh.position.x = object.position.x;
+                highlight_mesh.position.y = object.position.y + 0;
+                highlight_mesh.position.z = object.position.z;
+                highlight_mesh.updateMatrix();
+            }
+
+            // 自动解答
+            function auto_solve() {
+                setTimeout(function() {
+                    var index = 0;
+                    var interval = setInterval(function() {
+                        if (index >= map_data['oprations'].length) {
+                            clearInterval(interval);
+                            return;
+                        }
+                        var block_id = map_data['oprations'][index];
+                        var block_object = block_objects[block_id];
+                        scene.remove(block_object);
+                        var block_data = map_data['levelData'][block_object.map_layer][block_object.map_layer_index];
+                        print_block_info(block_data, true);
+                        index += 1
+                        if (index < map_data['oprations'].length) {
+                            block_id = map_data['oprations'][index];
+                            block_object = block_objects[block_id];
+                            update_highlight_mesh(block_object);
+                        } else {
+                            scene.remove(highlight_mesh);
+                        }
+                    }, 1500);
+                }, 500);
+            }
+
+            // 单步解答
+            function single_step_solve() {
+                if (map_data['oprations'] == null) {
+                    return;
+                }
+                if (solve_index >= map_data['oprations'].length) {
+                    return;
+                }
+                var block_id = map_data['oprations'][solve_index];
+                var block_object = block_objects[block_id];
+                scene.remove(block_object);
+                var block_data = map_data['levelData'][block_object.map_layer][block_object.map_layer_index];
+                print_block_info(block_data, true);
+                solve_index += 1
+                if (solve_index < map_data['oprations'].length) {
+                    block_id = map_data['oprations'][solve_index];
+                    block_object = block_objects[block_id];
+                    update_highlight_mesh(block_object);
+                } else {
+                    scene.remove(highlight_mesh);
+                }
+            }
+
             function bindEvent(){
                 document.getElementById('undo').onclick = undo;
+                document.getElementById('auto_solve').onclick = auto_solve;
+                document.getElementById('single_step_solve').onclick = single_step_solve;
             }
 
         </script>
