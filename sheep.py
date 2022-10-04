@@ -74,7 +74,7 @@ class Sheep():
 
         # 保存地图数据
         # data_string = json.dumps(map_data)
-        r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data), headers={'Content-Type': 'application/json'})
+        r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data, indent=4), headers={'Content-Type': 'application/json'})
         r_str = r.text
         url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
         if "id" not in url:
