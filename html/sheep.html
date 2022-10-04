@@ -52,7 +52,8 @@
             // 显示解答步骤的变量
             var block_objects = {}
             var solve_index = 0;
-            var highlight_mesh;
+            var highlight_mesh = null;
+            var solve_interval = null;
 
             init();
             //render(); // remove when using next line for animation loop (requestAnimationFrame)
@@ -94,25 +95,6 @@
                 controls.maxPolarAngle = Math.PI / 2;
 
                 // world
-
-                var type2name = {
-                    1:  "青草",
-                    2:  "胡萝卜",
-                    3:  "玉米",
-                    4:  "树桩",
-                    5:  "草叉",
-                    6:  "白菜",
-                    7:  "羊毛",
-                    8:  "刷子",
-                    9:  "剪刀",
-                    10: "奶瓶",
-                    11: "水桶",
-                    12: "手套",
-                    13: "铃铛",
-                    14: "火堆",
-                    15: "毛球",
-                    16: "干草"
-                }
 
                 // 方块图案
                 const textureLoader = new THREE.TextureLoader();
@@ -244,7 +226,32 @@
             }
 
             function print_block_info(block_data, is_remove) {
-                var info = `层数:${block_data['layerNum']}, 坐标:(${block_data['rolNum']}, ${block_data['rowNum']}), 类型:${block_data['type']}`
+
+                var type2name = {
+                    1:  "青草",
+                    2:  "胡萝卜",
+                    3:  "玉米",
+                    4:  "树桩",
+                    5:  "草叉",
+                    6:  "白菜",
+                    7:  "羊毛",
+                    8:  "刷子",
+                    9:  "剪刀",
+                    10: "奶瓶",
+                    11: "水桶",
+                    12: "手套",
+                    13: "铃铛",
+                    14: "火堆",
+                    15: "毛球",
+                    16: "干草"
+                }
+
+                var layer = block_data['layerNum'];
+                var x = block_data['rolNum'];
+                var y = block_data['rowNum'];
+                var type = block_data['type'];
+                var name = type2name[type];
+                var info = `层数:${layer}, 坐标:(${x}, ${y}), 类型:${type}(${name})`
                 if (is_remove) {
                     info = "移除方块 >> " + info;
                 }
@@ -267,28 +274,17 @@
 
             // 自动解答
             function auto_solve() {
-                setTimeout(function() {
-                    var index = 0;
-                    var interval = setInterval(function() {
-                        if (index >= map_data['oprations'].length) {
-                            clearInterval(interval);
-                            return;
-                        }
-                        var block_id = map_data['oprations'][index];
-                        var block_object = block_objects[block_id];
-                        scene.remove(block_object);
-                        var block_data = map_data['levelData'][block_object.map_layer][block_object.map_layer_index];
-                        print_block_info(block_data, true);
-                        index += 1
-                        if (index < map_data['oprations'].length) {
-                            block_id = map_data['oprations'][index];
-                            block_object = block_objects[block_id];
-                            update_highlight_mesh(block_object);
-                        } else {
-                            scene.remove(highlight_mesh);
-                        }
+                var auto_solve_element = document.getElementById('auto_solve');
+                if (solve_interval == null) {
+                    solve_interval = setInterval(function() {
+                        single_step_solve();
                     }, 1500);
-                }, 500);
+                    auto_solve_element.text = '【停止解答】';
+                } else {
+                    clearInterval(solve_interval);
+                    solve_interval = null;
+                    auto_solve_element.text = '【自动解答】';
+                }
             }
 
             // 单步解答
