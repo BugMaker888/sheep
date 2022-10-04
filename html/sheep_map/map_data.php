@@ -20,6 +20,10 @@
             while($row = $ret1->fetchArray()){
                 $map_info = $row["MAP_INFO"];
                 echo "const map_data = $map_info;";
+                array_push($obj,$row);
+            }
+            if(count($obj) == 0){
+                echo "window.alert('没有查询到 id=$id 的关卡地图数据！关卡地图数据可能已过期或者id不正确!')";
             }
             while($row = $ret2->fetchArray()){
                 $min_id = $row["MIN(ID)"];

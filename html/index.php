@@ -52,12 +52,12 @@ EOF;
           //echo "成功插入数据\n";
           while($row = $ret3->fetchArray() ){
             $ID = $row["MAX(ID)"];
-            echo "<a href='/sheep_map?id=$ID'>访问3d地图</a>\n\t";
+            echo "<a href='/sheep_map?id=$ID'>访问当前关卡3D地图</a>\n\t";
             echo "<script>window.location.href='/sheep_map?id=$ID';</script>\n";
           }
         }
       } else {
-        echo "<a href='/sheep_map'>访问3d地图</a>\n\t";
+        echo "<a href='/sheep_map'>访问示例3D地图</a>\n\t";
         echo "<script>window.location.href='/sheep_map';</script>\n";
       }
       $db->close();
