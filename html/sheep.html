@@ -20,8 +20,8 @@
     <body>
         <div id="info">
             <a id="undo" href="javascript:void(0)">【撤销移除】</a>
-            <a id="auto_solve" href="javascript:void(0)">【自动解答】</a>
-            <a id="single_step_solve" href="javascript:void(0)">【单步解答】</a>
+            <a id="auto_solve" href="javascript:void(0)"></a>
+            <a id="single_step_solve" href="javascript:void(0)"></a>
         </div>
 
         <!-- Import maps polyfill -->
@@ -156,6 +156,9 @@
                     var block_id = map_data['oprations'][solve_index];
                     var block_object = block_objects[block_id];
                     update_highlight_mesh(block_object);
+
+                    document.getElementById('auto_solve').text = "【自动解答】";
+                    document.getElementById('single_step_solve').text = "【单步解答】";
                 }
 
                 // lights
