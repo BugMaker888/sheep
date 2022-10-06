@@ -19,10 +19,9 @@
             $ret2 = $db->query("SELECT MIN(ID) from MAPS");
             while($row = $ret1->fetchArray()){
                 $map_info = $row["MAP_INFO"];
-                echo "const map_data = $map_info;";
-                array_push($obj,$row);
+                echo "const map_data = $map_info;";  
             }
-            if(count($obj) == 0){
+            if($map_info == null){
                 echo "window.alert('没有查询到 id=$id 的关卡地图数据！关卡地图数据可能已过期或者id不正确!')";
             }
             while($row = $ret2->fetchArray()){
