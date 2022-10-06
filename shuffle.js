@@ -25,12 +25,14 @@ var XorShift = function() {
 }();
 
 // 打乱数组的方法
-function shuffle(array, seed) {
+function shuffle(array, seed=null) {
     var xorshift = XorShift.instance;
-    // 设置随机种子
-    xorshift.setSeed(seed);
-    // 先获取一次随机值
-    xorshift.random();
+    if (seed != null) {
+        // 设置随机种子
+        xorshift.setSeed(seed);
+        // 先获取一次随机值
+        xorshift.random();
+    }
     // 数组下标从后往前遍历
     for (var i = array.length - 1; i >= 0; i--) {
         // 获取0到1之间的随机值
