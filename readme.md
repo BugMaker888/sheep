@@ -23,29 +23,9 @@ cd sheep/
 
 ---
 
-### 三、Three.js的配置
 
-`Three.js`是一个开源的网页3D渲染库，项目地址为：[https://github.com/mrdoob/three.js](https://github.com/mrdoob/three.js) 。
 
-#### 1、安装
-
-按顺序逐行执行以下命令：
-```
-git clone https://github.com/mrdoob/three.js.git
-cd three.js/
-npm install
-npm start
-```
-
-打开 [http://localhost:8080/examples/](http://localhost:8080/examples/) 就可以看到示例了，我的3d地图就是拿其中一个示例改的。
-
-#### 2、使用
-
-把本项目下的`html`目录里的所有内容拷贝到`three.js/examples/`目录里，这样就可以访问 [http://localhost:8080/examples/sheep.html](http://localhost:8080/examples/sheep.html) 了。
-
----
-
-### 四、mitmproxy的配置
+### 三、mitmproxy的配置
 
 `mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
 
@@ -58,7 +38,12 @@ pip install mitmproxy pyExecJs
 
 #### 2、启动
 
-因为`three.js`和`mitmproxy`都默认使用`8080`端口，所以需要改一下端口运行。
+在代码根目录执行
+```
+npm i -g http-server
+http-server
+```
+打开显示的链接就能看到3d地图。
 
 将终端切换到本项目目录，执行以下命令加载`sheep.py`插件：
 ```
@@ -91,7 +76,7 @@ mitmweb -p 6666 -s sheep.py
 
 ---
 
-### 五、游戏数据
+### 四、游戏数据
 
 文件`three.js/examples/map_data.js`里面保存着游戏的关卡数据。
 
