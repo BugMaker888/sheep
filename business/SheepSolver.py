@@ -34,6 +34,7 @@ class SheepSolver(object):
             self._card_count += len(level_data)
             card_list = [Card(item) for item in level_data]
             self._card_position.append_level_card(card_list)
+        self._card_position.generate_head_data()
 
     @func_set_timeout(300)
     def solve(self):
@@ -46,6 +47,7 @@ class SheepSolver(object):
                 self._operation_recover_card(head_item)
                 continue
             else:
+                self._situation_history.add(head_fingerprint)
                 if self._residual_pool.is_pool_full():
                     self._operation_recover_card(head_item)
                     continue
@@ -96,8 +98,3 @@ class SheepSolver(object):
         else:
             return "牌面无解"
 
-    def test(self):
-        key_list = self._card_position.get_head_key_list()
-        print(key_list)
-        self._card_position.pick_card(key_list[1])
-        print(self._card_position.get_head_key_list())
