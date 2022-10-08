@@ -1,5 +1,5 @@
-## PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)
-## 求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高
+> PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)
+> 求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高
 
 ### 一、运行环境
 
@@ -33,33 +33,7 @@ cd sheep/
 
 ---
 
-### 三、Three.js的配置
-
-`Three.js`是一个开源的网页3D渲染库，项目地址为：[https://github.com/mrdoob/three.js](https://github.com/mrdoob/three.js) 。
-
-相关文件已集成到`html`目录中，将 html 中的文件放在网站根目录下即可。
-
-#### ~~1、安装~~
-
-~~按顺序逐行执行以下命令：~~
-```
-git clone https://github.com/mrdoob/three.js.git
-cd three.js/
-npm install
-npm start
-```
-
-~~打开 [http://localhost:8080/examples/](http://localhost:8080/examples/) 就可以看到示例了，我的3d地图就是拿其中一个示例改的。~~
-
-
-#### 2、使用
-
-~~把本项目下的`html`目录里的所有内容拷贝到`three.js/examples/`目录里，这样就可以访问 [http://localhost:8080/examples/sheep.html](http://localhost:8080/examples/sheep.html) 了。~~
-
-
----
-
-### 四、mitmproxy的配置
+### 三、mitmproxy的配置
 
 `mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
 
@@ -122,7 +96,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 ---
 
-### 五、游戏数据
+### 四、游戏数据
 
 文件`sheep_map/map_data.js`里面是游戏的关卡数据示例，本项目抓取的关卡地图数据保存在服务器端的 sqlite 文件中。
 
@@ -143,7 +117,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
     "levelData": {  //关卡数据
         "1": [      //第1层，也就是最底层
             {
-                "id": "1-24-8",
+                "id": "1-24-8", //方块id
                 "type": 2,      //图案类型
                 "rolNum": 24,   //x坐标
                 "rowNum": 8,    //y坐标

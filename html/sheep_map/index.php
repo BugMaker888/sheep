@@ -4,15 +4,21 @@
         <title>羊了个羊3D地图</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="main.css">
         <style>
             body {
-                background-color: #ccc;
+                background-color: #cff998;
                 color: #000;
+                overflow: hidden;
             }
 
             a {
                 color: #f00;
+            }
+            * {
+                margin:0;
+            }
+            #info {
+                position: absolute;
             }
         </style>
     </head>
@@ -43,8 +49,8 @@
         <script type="importmap">
             {
                 "imports": {
-                    "three": "../build/three.module.js",
-                    "three/addons/": "./jsm/"
+                    "three": "https://unpkg.com/three@0.145.0/build/three.module.js",
+                    "OrbitControls": "https://unpkg.com/three@0.145.0/examples/jsm/controls/OrbitControls.js"
                 }
             }
         </script>
@@ -53,7 +59,7 @@
 
             import * as THREE from 'three';
 
-            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+            import { OrbitControls } from 'OrbitControls';
 
             let camera, controls, scene, renderer;
             const raycaster = new THREE.Raycaster();
