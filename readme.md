@@ -35,18 +35,23 @@ python -m http.server 8080
 
 ### 四、mitmproxy的配置
 
-`mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的Python代码进行数据处理。
+[mitmproxy](https://github.com/mitmproxy/mitmproxy)是一个开源的抓包工具，可以加载自己写的Python代码进行数据处理。
 
 #### 1、安装
 
-执行以下命令安装`mitmproxy`与`pyExecJs`：
+执行以下命令安装`mitmproxy`：
 ```
-pip install mitmproxy pyExecJs
+pip install mitmproxy
+```
+
+由于插件使用到了`pyExecJs`库，所以还需要执行：
+```
+pip install pyExecJs
 ```
 
 #### 2、启动
 
-新开一个终端，切换到本项目目录，执行以下命令加载`sheep.py`插件：
+新开一个终端，切换到本项目目录，执行以下命令启动抓包工具并加载`sheep.py`插件：
 ```
 mitmweb -p 6666 -s sheep.py
 ```
@@ -76,7 +81,7 @@ mitmweb -p 6666 -s sheep.py
 
 ### 五、游戏数据
 
-文件`three.js/examples/map_data.js`里面保存着游戏的关卡数据。
+文件`html/map_data.js`里面保存着游戏的关卡数据。
 
 大致说明一下字段的含义：
 
