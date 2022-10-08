@@ -51,13 +51,14 @@ class Sheep():
                 block_types.extend([i] * count)
 
         # 调用js方法将数组打乱，打乱后的结果和游戏的一样
-        block_types = execjs.compile(self.js_code).call("shuffle", block_types, self.seed)
+        block_types = execjs.compile(self.js_code).call(
+            "shuffle", block_types, self.seed)
         print(block_types)
 
         # 将游戏的层数排序
         level_data = map_data["levelData"]
         layers = list(level_data.keys())
-        layers.sort(key=lambda x:int(x))
+        layers.sort(key=lambda x: int(x))
 
         # 为了方便three.js按顺序读取层数，所以将层数保存起来
         map_data["layers"] = layers
@@ -73,12 +74,12 @@ class Sheep():
 
         # 保存地图数据
         data_string = f"const map_data = {json.dumps(map_data, indent=4)};"
-        save_path = "./three.js/examples/map_data.js"
+        save_path = "./html/map_data.js"
         with open(save_path, "w") as f:
             f.write(data_string)
             f.close()
 
         print("==========================================")
 
-addons = [Sheep()]
 
+addons = [Sheep()]
