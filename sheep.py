@@ -99,8 +99,10 @@ class Sheep():
                 self.post_map_data(result)
             else:
                 print("牌面无解！建议放弃挑战并重新开始！")
+                self.post_map_data(map_data)
         except FunctionTimedOut:
             print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
+            self.post_map_data(map_data)
 
     def post_map_data(self, map_data):
         # 提交关卡地图数据
