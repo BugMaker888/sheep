@@ -1,13 +1,10 @@
 
+> 感谢`BI1LQV`的代码，让安装流程精简了很多，可以省去了Node.js的安装。  
+> 目前的安装教程和b站视频区别较大，以本页面的教程为准。
+
 ### 一、运行环境
 
-#### 1、Python3
-
-推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
-
-#### 2、Node.js
-
-为了运行`three.js`网页，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。
+需要安装`Python3`，推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
 
 ---
 
@@ -23,47 +20,50 @@ cd sheep/
 
 ---
 
+### 三、启动网页服务器
 
+在本项目目录下执行以下命令启动网页服务器：
+```
+python -m http.server 8080
+```
 
-### 三、mitmproxy的配置
+这时便可以使用网址 [http://localhost:8080/html/sheep.html](http://localhost:8080/html/sheep.html) 访问默认的3d地图。
 
-`mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的python代码进行数据处理。
+> 如果8080端口被占用，可以改用其他端口。
+
+---
+
+### 四、mitmproxy的配置
+
+`mitmproxy`是一个开源的抓包工具，项目地址为：[https://github.com/mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) ，最大的优点是可以加载自己写的Python代码进行数据处理。
 
 #### 1、安装
 
-安装Python3后，执行以下命令安装mitmproxy与pyExecJs：
+执行以下命令安装`mitmproxy`与`pyExecJs`：
 ```
 pip install mitmproxy pyExecJs
 ```
 
 #### 2、启动
 
-在代码根目录执行
-```
-npm i -g http-server
-http-server
-```
-打开显示的链接就能看到3d地图。
-
-将终端切换到本项目目录，执行以下命令加载`sheep.py`插件：
+新开一个终端，切换到本项目目录，执行以下命令加载`sheep.py`插件：
 ```
 mitmweb -p 6666 -s sheep.py
 ```
 
 执行后浏览器会弹出一个抓包的网页界面。
 
-
-#### 3、安装证书
-
 接下来使用手机连接电脑的ip以及使用`6666`端口作为代理，就可以抓包了。
 
-设置代理可以参考视频教程 [【4分钟教会你Charles抓包设置抓取电脑HTTPS以及IOS手机抓包-哔哩哔哩】](https://b23.tv/S0d8iYa) 两分钟的地方。
+> 设置代理可以参考视频教程 [【4分钟教会你Charles抓包设置抓取电脑HTTPS以及IOS手机抓包-哔哩哔哩】](https://b23.tv/S0d8iYa) 两分钟的地方。
+
+#### 3、安装证书
 
 使用手机浏览器访问 [http://mitm.it](http://mitm.it) 安装`mitmproxy`的证书。
 
 苹果手机需要在 <kbd>设置</kbd> - <kbd>通用</kbd> - <kbd>关于本机</kbd> - <kbd>证书信任设置</kbd> 里信任证书。
 
-如果安卓手机安装不了证书，也可以使用电脑的安卓模拟器。
+如果安卓手机安装不了证书，也可以使用电脑的夜神模拟器，安装安卓5系统。
 
 
 #### 4、使用
@@ -72,11 +72,9 @@ mitmweb -p 6666 -s sheep.py
 
 手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。
 
-> 因为`sheep.py`默认将地图数据保存到`./three.js/examples/map_data.js`里，如果`three.js/`没放到`sheep/`目录里的话，需要修改`sheep.py`里的路径。
-
 ---
 
-### 四、游戏数据
+### 五、游戏数据
 
 文件`three.js/examples/map_data.js`里面保存着游戏的关卡数据。
 
@@ -97,7 +95,7 @@ mitmweb -p 6666 -s sheep.py
     "levelData": {  //关卡数据
         "1": [      //第1层，也就是最底层
             {
-                "id": "1-24-8",
+                "id": "1-24-8", //方块id
                 "type": 2,      //图案类型
                 "rolNum": 24,   //x坐标
                 "rowNum": 8,    //y坐标
