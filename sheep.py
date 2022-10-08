@@ -1,8 +1,13 @@
 from mitmproxy import ctx
+from business.SheepSolver import SheepSolver
+from func_timeout import func_set_timeout
+from func_timeout.exceptions import FunctionTimedOut
 import requests
 import execjs
 import json
 import os
+import time
+import _thread
 
 
 class Sheep():
@@ -72,7 +77,33 @@ class Sheep():
                 block_data["type"] = block_types[index]
                 index += 1
 
-        # 保存地图数据
+        # 同步进行自动求解
+        try:
+            print("求解中，请稍等5分钟...")
+            _thread.start_new_thread( self.auto_solve, (map_data,) )
+        except Exception as e:
+            print ("Error: 无法启动线程\n%s"%e)
+        print("==========================================")
+
+    def auto_solve(self, map_data):
+        # 自动求解
+        sheep_solver = SheepSolver(map_data)
+        sheep_solver.init_card_data()
+        start_time = time.time()
+        try:
+            sheep_solver.solve()
+            end_time = time.time()
+            result = sheep_solver.get_result()
+            if result != "牌面无解":
+                print("计算用时: {}".format(end_time - start_time))
+                self.post_map_data(result)
+            else:
+                print("牌面无解！建议放弃挑战并重新开始！")
+        except FunctionTimedOut:
+            print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
+
+    def post_map_data(self, map_data):
+        # 提交关卡地图数据
         r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data, indent=4), headers={'Content-Type': 'application/json'})
         r_str = r.text
         url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
@@ -81,6 +112,5 @@ class Sheep():
         else:
             url = "https://ylgy.endless084.top/%s"%url
             print("当前关卡3D地图地址：%s"%url)
-        print("==========================================")
 
 addons = [Sheep()]

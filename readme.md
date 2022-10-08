@@ -1,4 +1,5 @@
 ## PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)
+## 求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高
 
 ### 一、运行环境
 
@@ -66,9 +67,9 @@ npm start
 
 #### 1、安装
 
-安装Python3后，执行以下命令安装mitmproxy与pyExecJs：
+安装Python3后，执行以下命令安装mitmproxy、pyExecJs、func_timeout和requests：
 ```
-pip install mitmproxy pyExecJs
+pip install mitmproxy pyExecJs func_timeout requests
 ```
 
 #### 2、启动
