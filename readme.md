@@ -4,7 +4,15 @@
 
 ### 一、运行环境
 
-需要安装`Python3`，推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
+#### 1、Python3
+
+推荐使用`Anaconda`进行安装，官网：[https://www.anaconda.com](https://www.anaconda.com/) 。
+
+#### 2、Node.js
+
+官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。
+
+> 如果不安装node.js的话，使用`pyExecJs`执行js代码会报错。
 
 ---
 
