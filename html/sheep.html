@@ -9,16 +9,31 @@
                 background-color: #cff998;
                 color: #000;
                 overflow: hidden;
+                font-family: Monospace;
+                font-size: 13px;
+                line-height: 24px;
+                overscroll-behavior: none;
             }
-
             a {
                 color: #f00;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
             }
             * {
                 margin:0;
             }
             #info {
                 position: absolute;
+                top: 0px;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                text-align: center;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
             }
         </style>
     </head>
@@ -53,13 +68,17 @@
             let camera, controls, scene, renderer;
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
-            const removed = [];
+            const removed_blocks = [];
 
             // 显示解答步骤的变量
             var block_objects = {}
             var solve_index = 0;
             var highlight_mesh = null;
             var solve_interval = null;
+
+            var material_blocks = [];
+            var mask_material_blocks = [];
+            var material_side;
 
             init();
             //render(); // remove when using next line for animation loop (requestAnimationFrame)
@@ -100,25 +119,81 @@
 
                 controls.maxPolarAngle = Math.PI / 2;
 
-                // world
+                // 构建地图遮挡关系
+                var mask_data = [];
+                for (var row = 0; row < 64; row++) {
+                    var rows = [];
+                    for (var col = 0; col < 64; col++) {
+                        rows.push(null);
+                    }
+                    mask_data.push(rows);
+                }
+                const layers = map_data['layers'];
+                const level_data = map_data['levelData'];
+                for ( let i = 0; i < layers.length; i++ ) {
+                    var layer = layers[i];
+                    var block_datas = level_data[layer];
+                    for ( let j = 0; j < block_datas.length; j ++ ) {
+                        var block_data = block_datas[j];
+                        block_data.pre_blocks = [];     // 遮挡住的方块
+                        block_data.next_blocks = [];    // 被遮挡的方块
+                        // 取走方块方法
+                        block_data.take_away = function() {
+                            for (var i = 0; i < this.pre_blocks.length; i++) {
+                                var pre_block = this.pre_blocks[i];
+                                pre_block.next_blocks.pop(this);
+                                update_material(block_objects[pre_block.id], pre_block);
+                            }
+                        }
+                        // 放回方块方法
+                        block_data.put_back = function() {
+                            for (var i = 0; i < this.pre_blocks.length; i++) {
+                                var pre_block = this.pre_blocks[i];
+                                pre_block.next_blocks.push(this);
+                                update_material(block_objects[pre_block.id], pre_block);
+                            }
+                        }
+                        // 找出被当前方块遮挡住的方块
+                        var pre_blocks = [];
+                        for (var col = block_data.rolNum; col < block_data.rolNum+8; col++) {
+                            for (var row = block_data.rowNum; row < block_data.rowNum+8; row++) {
+                                var pre_block = mask_data[row][col];
+                                if (pre_block) {
+                                    pre_blocks.push(pre_block);
+                                }
+                                mask_data[row][col] = block_data;
+                            }
+                        }
+                        // 构建方块的遮挡关系
+                        for (var k = 0; k < pre_blocks.length; k++) {
+                            var pre_block = pre_blocks[k];
+                            if (block_data.pre_blocks.indexOf(pre_block) < 0) {
+                                block_data.pre_blocks.push(pre_block);
+                            }
+                            if (pre_block.next_blocks.indexOf(block_data) < 0) {
+                                pre_block.next_blocks.push(block_data);
+                            }
+                        }
+                    }
+                }
+                //console.log(mask_data);
 
                 // 方块图案
                 const textureLoader = new THREE.TextureLoader();
-                const material_side = new THREE.MeshLambertMaterial({
+                material_side = new THREE.MeshLambertMaterial({
                     map: textureLoader.load('sheep_images/side.png'),
                 })
-                var material_blocks = []
                 for (let i = 1; i <= 16; i++) {
-                    const material_block = new THREE.MeshLambertMaterial({
+                    material_blocks.push(new THREE.MeshLambertMaterial({
                         map: textureLoader.load(`sheep_images/${i}.png`),
-                    })
-                    material_blocks.push(material_block)
+                    }));
+                    mask_material_blocks.push(new THREE.MeshLambertMaterial({
+                        map: textureLoader.load(`sheep_images/mask/${i}.png`),
+                    }));
                 }
 
                 // 创建方块
                 var geometry = new THREE.BoxGeometry( 8, 2, 8 );
-                const layers = map_data['layers'];
-                const level_data = map_data['levelData'];
                 // 遍历每一层
                 for ( let i = 0; i < layers.length; i++ ) {
 
@@ -132,8 +207,7 @@
                         print_block_info(block_data, false);
 
                         // 创建方块
-                        const materials = [material_side, material_side, material_blocks[block_data['type']-1], material_side, material_side, material_side];
-                        const mesh = new THREE.Mesh(geometry, materials);
+                        const mesh = new THREE.Mesh(geometry, null);
                         mesh.position.x = block_data['rolNum'] - 28;
                         mesh.position.y = (block_data['layerNum'] - 1) * 3.5;
                         mesh.position.z = block_data['rowNum'] - 36;
@@ -143,6 +217,7 @@
                         mesh.map_layer_index = j;
                         scene.add( mesh );
                         block_objects[block_data['id']] = mesh;
+                        update_material(mesh, block_data);
                     }
                 }
 
@@ -189,10 +264,8 @@
             }
 
             function onWindowResize() {
-
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
-
                 renderer.setSize( window.innerWidth, window.innerHeight );
             }
 
@@ -211,29 +284,33 @@
              
                 if (intersects.length > 0) {
                     var object = intersects[0].object;
-                    var block_data = map_data['levelData'][object.map_layer][object.map_layer_index];
+                    var block_data = get_block_data_by_object(object);
+                    if (block_data.next_blocks.length > 0) {
+                        return;
+                    }
                     print_block_info(block_data, true);
-                    removed.push(object);
+                    removed_blocks.push(object);
                     scene.remove(object);
+                    block_data.take_away();
                 }
             }
 
             function animate() {
-
                 requestAnimationFrame( animate );
-
                 controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
-
                 render();
-
             }
 
             function render() {
-
                 renderer.render( scene, camera );
-
             }
 
+            // 获取方块信息
+            function get_block_data_by_object(object) {
+                return map_data['levelData'][object.map_layer][object.map_layer_index];
+            }
+
+            // 打印方块信息
             function print_block_info(block_data, is_remove) {
 
                 var type2name = {
@@ -267,18 +344,39 @@
                 console.log(info);
             }
 
-            function undo() {
-                const object = removed.pop();
-                if (object) {
-                    scene.add(object);
+            // 更新方块图案
+            function update_material(block_object, block_data) {
+                var material = null;
+                if (block_data.next_blocks.length > 0) {
+                    material = mask_material_blocks[block_data.type-1];
+                } else {
+                    material = material_blocks[block_data.type-1];
                 }
+                var materials = block_object.material;
+                if (materials == null) {
+                    materials = [material_side, material_side, material, material_side, material_side, material_side];
+                } else {
+                    materials[2] = material;
+                }
+                block_object.material = materials;
             }
 
+            // 更新高亮方块位置
             function update_highlight_mesh(object) {
                 highlight_mesh.position.x = object.position.x;
                 highlight_mesh.position.y = object.position.y + 0;
                 highlight_mesh.position.z = object.position.z;
                 highlight_mesh.updateMatrix();
+            }
+
+            // 撤销移除
+            function undo() {
+                const object = removed_blocks.pop();
+                if (object) {
+                    scene.add(object);
+                    var block_data = get_block_data_by_object(object);
+                    block_data.put_back();
+                }
             }
 
             // 自动解答
@@ -307,8 +405,9 @@
                 var block_id = map_data['oprations'][solve_index];
                 var block_object = block_objects[block_id];
                 scene.remove(block_object);
-                var block_data = map_data['levelData'][block_object.map_layer][block_object.map_layer_index];
+                var block_data = get_block_data_by_object(block_object);
                 print_block_info(block_data, true);
+                block_data.take_away();
                 solve_index += 1
                 if (solve_index < map_data['oprations'].length) {
                     block_id = map_data['oprations'][solve_index];
