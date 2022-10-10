@@ -3,3 +3,6 @@
 node_modules/
 *.json
 test.py
+__pycache__/
+business/__pycache__/
+html/test.html
