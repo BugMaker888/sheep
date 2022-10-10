@@ -1,11 +1,12 @@
+import copy
 import json
-import os
-import sys
-from hepler.FileHelper import FileHelper
+#import os
+#import sys
+#from hepler.FileHelper import FileHelper
 from item.Card import Card
 from item.CardPosition import CardPosition
 from item.ResidualPool import ResidualPool
-from func_timeout import func_set_timeout
+#from func_timeout import func_set_timeout
 
 
 class SheepSolver(object):
@@ -27,6 +28,7 @@ class SheepSolver(object):
         self._residual_pool = ResidualPool()
         self._pick_list = []
         self._situation_history = set()
+        self.picked_list = []
 
     def init_card_data(self):
         self._origin_data = dict(sorted(self._origin_data.items(), key=lambda item: int(item[0])))
@@ -36,10 +38,47 @@ class SheepSolver(object):
             self._card_position.append_level_card(card_list)
         self._card_position.generate_head_data()
 
-    @func_set_timeout(300)
-    def solve(self):
-        print("\r当前进度为: {}/{}".format(len(self._pick_list), self._card_count), end="")
-        head_list = self._card_position.get_head_key_list()
+    #@func_set_timeout(300)
+    def solve(self, issort, percent):
+        #print("\r当前进度为: {}/{}".format(len(self._pick_list), self._card_count), end="")
+        if (len(self._pick_list)/self._card_count) >= percent:
+            pool_card = copy.deepcopy(self._residual_pool._pool_card)
+            for i in pool_card.keys():
+                if pool_card[i] == 2:
+                    if issort == "true":
+                        head_list = sorted(self._card_position.get_head_key_list())
+                    elif issort == "reverse":
+                        head_list = sorted(self._card_position.get_head_key_list(), reverse=True)
+                    else:
+                        head_list = self._card_position.get_head_key_list()
+                    for j in head_list:
+                        original_data = self._card_position.get_card_detail(j)._origin_data
+                        if original_data["type"] == i:
+                            self._operation_pick_card(j)
+                            head_fingerprint = self._card_position.get_head_description()
+                            if head_fingerprint in self._situation_history:
+                                self._operation_recover_card(j)
+                                continue
+                            else:
+                                self._situation_history.add(head_fingerprint)
+                                if self._residual_pool.is_pool_full():
+                                    self._operation_recover_card(j)
+                                    continue
+                                self.solve(issort, percent)
+                                if self.picked_list != []:
+                                    return True
+                                if not self._card_position.is_head_data_empty():
+                                    self._operation_recover_card(j)
+                                else:
+                                    self.picked_list = self._pick_list
+                                    return True
+                            break
+        if issort == "true":
+            head_list = sorted(self._card_position.get_head_key_list())
+        elif issort == "reverse":
+            head_list = sorted(self._card_position.get_head_key_list(), reverse=True)
+        else:
+            head_list = self._card_position.get_head_key_list()
         for head_item in head_list:
             self._operation_pick_card(head_item)
             head_fingerprint = self._card_position.get_head_description()
@@ -51,11 +90,14 @@ class SheepSolver(object):
                 if self._residual_pool.is_pool_full():
                     self._operation_recover_card(head_item)
                     continue
-                self.solve()
+                self.solve(issort, percent)
+                if self.picked_list != []:
+                    return True
                 if not self._card_position.is_head_data_empty():
                     self._operation_recover_card(head_item)
                 else:
-                    break
+                    self.picked_list = self._pick_list
+                    return True
 
     def test_result(self, pick_list: list):
         for pick_index in pick_list:
@@ -75,15 +117,15 @@ class SheepSolver(object):
         self._pick_list.remove(card_index)
 
     def print_result(self):
-        if self._card_position.is_head_data_empty():
-            print(json.dumps(self._pick_list))
+        if self.picked_list != []:
+            print(json.dumps(self.picked_list))
         else:
             print("牌面无解")
 
     def get_result(self):
-        if self._card_position.is_head_data_empty():
+        if self.picked_list != []:
             oprations = []
-            for i in self._pick_list:
+            for i in self.picked_list:
                 count = 0
                 for data_list in self.map_data["levelData"].values():
                     for data_item in data_list:

@@ -1,12 +1,8 @@
 from mitmproxy import ctx
-from business.SheepSolver import SheepSolver
-from func_timeout import func_set_timeout
-from func_timeout.exceptions import FunctionTimedOut
-import requests
+from autoSolve import auto_solve
 import execjs
 import json
 import os
-import time
 import _thread
 
 
@@ -76,43 +72,18 @@ class Sheep():
                     continue
                 block_data["type"] = block_types[index]
                 index += 1
-
+        
+        print("==========================================")
+        # 保存关卡数据到文件
+        with open("map_data.json", "w", encoding="utf8") as f:
+            f.write(json.dumps(map_data, indent=4))
+        print("已将当前关卡数据保存到当前路径下 map_data.json 文件！")
         # 同步进行自动求解
         try:
-            print("求解中，请稍等5分钟...")
-            _thread.start_new_thread( self.auto_solve, (map_data,) )
+            print("\n将使用默认配置求解！\n\n建议同时在新的命令行终端分别同时运行以下命令：\npython3 autoSolve.py -s reverse\npython3 autoSolve.py -p 0\npython3 autoSolve.py -s reverse -p 0\n")
+            print("开始求解，请稍等5分钟...")
+            _thread.start_new_thread( auto_solve, (map_data,"",0.85,) )
         except Exception as e:
             print ("Error: 无法启动线程\n%s"%e)
-        print("==========================================")
-
-    def auto_solve(self, map_data):
-        # 自动求解
-        sheep_solver = SheepSolver(map_data)
-        sheep_solver.init_card_data()
-        start_time = time.time()
-        try:
-            sheep_solver.solve()
-            end_time = time.time()
-            result = sheep_solver.get_result()
-            if result != "牌面无解":
-                print("计算用时: {}".format(end_time - start_time))
-                self.post_map_data(result)
-            else:
-                print("牌面无解！建议放弃挑战并重新开始！")
-                self.post_map_data(map_data)
-        except FunctionTimedOut:
-            print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
-            self.post_map_data(map_data)
-
-    def post_map_data(self, map_data):
-        # 提交关卡地图数据
-        r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data, indent=4), headers={'Content-Type': 'application/json'})
-        r_str = r.text
-        url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
-        if "id" not in url:
-            print("3D地图生成失败！")
-        else:
-            url = "https://ylgy.endless084.top/%s"%url
-            print("当前关卡3D地图地址：%s"%url)
 
 addons = [Sheep()]

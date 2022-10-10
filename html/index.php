@@ -40,7 +40,7 @@ EOF;
 
       $req_json_str = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
       //echo gettype($req_json_str);
-      if(strpos($req_json_str, "blockTypeData") !== false){
+      if(strpos($req_json_str, "levelData") !== false && strpos($req_json_str, "layers") !== false){
         $sql2 = "INSERT INTO MAPS (MAP_INFO) VALUES ('$req_json_str')";
         $ret2 = $db->exec($sql2);
         $ret3 = $db->query("SELECT MAX(ID) from MAPS");
