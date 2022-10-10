@@ -155,8 +155,8 @@
                         }
                         // 找出被当前方块遮挡住的方块
                         var pre_blocks = [];
-                        for (var col = block_data.rolNum; col < block_data.rolNum+8; col++) {
-                            for (var row = block_data.rowNum; row < block_data.rowNum+8; row++) {
+                        for (var col = block_data.rolNum; col < block_data.rolNum+8 && col < 64; col++) {
+                            for (var row = block_data.rowNum; row < block_data.rowNum+8 && row < 64; row++) {
                                 var pre_block = mask_data[row][col];
                                 if (pre_block) {
                                     pre_blocks.push(pre_block);
