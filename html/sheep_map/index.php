@@ -161,7 +161,7 @@
 
                 // 构建地图遮挡关系
                 var mask_data = [];
-                for (var row = 0; row < 64; row++) {
+                for (var row = 0; row < 80; row++) {
                     var rows = [];
                     for (var col = 0; col < 64; col++) {
                         rows.push(null);
@@ -195,8 +195,8 @@
                         }
                         // 找出被当前方块遮挡住的方块
                         var pre_blocks = [];
-                        for (var col = block_data.rolNum; col < block_data.rolNum+8 && col < 64; col++) {
-                            for (var row = block_data.rowNum; row < block_data.rowNum+8 && row < 64; row++) {
+                        for (var col = block_data.rolNum; col < block_data.rolNum+8; col++) {
+                            for (var row = block_data.rowNum; row < block_data.rowNum+8; row++) {
                                 var pre_block = mask_data[row][col];
                                 if (pre_block) {
                                     pre_blocks.push(pre_block);
