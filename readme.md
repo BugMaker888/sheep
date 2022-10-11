@@ -1,5 +1,4 @@
 
-> 感谢`BI1LQV`的代码，让安装流程精简了很多，可以省去了Node.js的安装。  
 > 目前的安装教程和b站视频区别较大，以本页面的教程为准。
 
 ### 一、运行环境
@@ -10,9 +9,11 @@
 
 #### 2、Node.js
 
-官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。
+用来安装网页服务器以及防止`pyExecJs`库报错，官网：[https://nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download/) 。
 
-> 如果不安装node.js的话，使用`pyExecJs`执行js代码会报错。
+#### 3、Git
+
+Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](https://gitforwindows.org/) 。
 
 ---
 
@@ -30,14 +31,15 @@ cd sheep/
 
 ### 三、启动网页服务器
 
-在本项目目录下执行以下命令启动网页服务器：
+在本项目目录下分别执行以下命令启动网页服务器：
 ```
-python -m http.server 8080
+npm i -g http-server
+http-server
 ```
 
 这时便可以使用网址 [http://localhost:8080/html/sheep.html](http://localhost:8080/html/sheep.html) 访问默认的3d地图。
 
-> 如果8080端口被占用，可以改用其他端口。
+> 默认使用8080端口，如果8080端口被占用，终端会显示新的端口。
 
 ---
 
@@ -78,6 +80,7 @@ mitmweb -p 6666 -s sheep.py
 
 如果安卓手机安装不了证书，也可以使用电脑的夜神模拟器，安装安卓5系统。
 
+也可以使用Windows版微信的小程序。
 
 #### 4、使用
 
