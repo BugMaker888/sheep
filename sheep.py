@@ -1,3 +1,4 @@
+from os.path import isfile
 from mitmproxy import ctx
 from autoSolve import auto_solve
 import execjs
@@ -79,10 +80,31 @@ class Sheep():
             f.write(json.dumps(map_data, indent=4))
         print("已将当前关卡数据保存到当前路径下 map_data.json 文件！")
         # 同步进行自动求解
+        if os.path.isfile("config.json"):
+            try:
+                with open("config.json","r",encoding="utf8") as f:
+                    configs = json.loads(f.read())
+                if "issort" not in configs or "percent" not in configs or "timeout" not in configs or ("timeout" in configs and type(configs["timeout"]) != int) or ("percent" in configs and type(configs["percent"]) != float):
+                    print("\n当前配置文件存在错误，将使用默认配置求解！")
+                    configs = {"issort":"","percent":0.85,"timeout":180}
+                    with open("config.json","w",encoding="utf8") as f:
+                        f.write(json.dumps(configs,indent=4))
+                else:
+                    print("\n将使用配置文件 config.json 的配置求解！")
+            except:
+                print("\n当前配置文件存在错误，将使用默认配置求解！")
+                configs = {"issort":"","percent":0.85,"timeout":180}
+                with open("config.json","w",encoding="utf8") as f:
+                    f.write(json.dumps(configs,indent=4))
+        else:
+            print("\n当前配置文件不存在，将使用默认配置求解！")
+            configs = {"issort":"","percent":0.85,"timeout":180}
+            with open("config.json","w",encoding="utf8") as f:
+                f.write(json.dumps(configs,indent=4))
         try:
-            print("\n将使用默认配置求解！\n\n建议同时在新的命令行终端分别同时运行以下命令：\npython3 autoSolve.py -s reverse\npython3 autoSolve.py -p 0\npython3 autoSolve.py -s reverse -p 0\n")
-            print("开始求解，请稍等5分钟...")
-            _thread.start_new_thread( auto_solve, (map_data,"",0.85,) )
+            print("\n建议同时在新的命令行终端分别同时运行以下命令：\npython3 autoSolve.py -s reverse\npython3 autoSolve.py -p 0\npython3 autoSolve.py -s reverse -p 0\n")
+            print("开始求解，请稍等%d秒..."%configs["timeout"])
+            _thread.start_new_thread( auto_solve, (map_data,configs["issort"],configs["percent"],configs["timeout"],) )
         except Exception as e:
             print ("Error: 无法启动线程\n%s"%e)
 

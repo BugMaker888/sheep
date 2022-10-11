@@ -1,6 +1,8 @@
 > PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)<br>
 求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高
 
+> 经过一些调整和测试，四种模式同时尝试有一定概率在短时间内得到解，甚至是多解，建议超过60~90秒就放弃重试！
+
 ### 一、运行环境
 
 #### 1、Python3

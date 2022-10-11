@@ -73,6 +73,7 @@ class SheepSolver(object):
                                     self.picked_list = self._pick_list
                                     return True
                             break
+                    break
         if issort == "true":
             head_list = sorted(self._card_position.get_head_key_list())
         elif issort == "reverse":

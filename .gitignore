@@ -2,6 +2,7 @@
 .idea/
 node_modules/
 *.json
+!config.json
 test.py
 __pycache__/
 business/__pycache__/
