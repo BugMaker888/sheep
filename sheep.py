@@ -14,14 +14,16 @@ def cmd(command):
         output = ""
         for i in (subp.communicate()[0]).split("\n"):
             if "进度" in i and output == "":
-                output += "\n%s："%i[:i.index("进度")]
+                output += "\n%s：\033[0m"%i[:i.index("进度")]
             elif "超时" in i:
-                output += "%s"%i[i.index("自动求解超时"):]
+                output += "\033[0;33;40m%s"%i[i.index("自动求解超时"):]
             elif "无解" in i:
-                output += "%s"%i[i.index("牌面无解"):]
+                output += "\033[0;33;40m%s"%i[i.index("牌面无解"):]
             elif "计算用时" in i:
-                output += "%s "%i[i.index("计算用时"):]
+                output += "\033[0;32;40m%s | "%i[i.index("计算用时"):]
             elif "当前关卡3D地图地址" in i:
+                output += "%s"%i
+            elif "地图生成失败" in i:
                 output += "%s"%i
         print(output)
     else:

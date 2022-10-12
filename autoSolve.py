@@ -51,12 +51,12 @@ def auto_solve(map_data, issort, percent, timeout, threadName):
         elif second >= timeout:
             if thread1.is_alive():
                 stop_thread(thread1)
-                print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
+                print("\033[0;33;40m自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！\033[0m")
                 print("==========================================")
                 exit(0)
         time.sleep(1)
         second += 1
-        print("\r%s进度：%d/%d"%(threadName, second, timeout),end="")
+        print("\r\033[0;31;40m%s进度：\033[0m%d/%d"%(threadName, second, timeout),end="")
     #except FunctionTimedOut:
         #print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
         #self.post_map_data(map_data)
@@ -64,7 +64,7 @@ def auto_solve(map_data, issort, percent, timeout, threadName):
     end_time = time.time()
     result = sheep_solver.get_result()
     if result != "牌面无解":
-        print("计算用时: {:.2f}".format(end_time - start_time))
+        print("\033[0;32;40m计算用时：\033[0m\033[0;34;40m {:.2f}\033[0m".format(end_time - start_time))
         with open("map_data_oprations.json","w",encoding="utf8") as f:
             f.write(json.dumps(result, indent=4))
         with open("html/sheep_map/map_data.js","w",encoding="utf8") as f:
@@ -73,7 +73,7 @@ def auto_solve(map_data, issort, percent, timeout, threadName):
         print("==========================================")
         post_map_data(result)
     else:
-        print("牌面无解！建议放弃挑战并重新开始！")
+        print("\033[0;33;40m牌面无解！建议放弃挑战并重新开始！\033[0m")
         print("==========================================")
         #self.post_map_data(map_data)
 
@@ -85,10 +85,10 @@ def post_map_data(map_data):
     url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
     if "id" not in url:
         print(r_str)
-        print("\n3D地图生成失败！")
+        print("\n\033[0;33;40m3D地图生成失败！\033[0m")
     else:
         url = "https://ylgy.endless084.top/%s"%url
-        print("当前关卡3D地图地址：%s"%url)
+        print("\033[0;32;40m当前关卡3D地图地址：\033[0m\033[0;34;40m%s\033[0m"%url)
 
 
 if __name__ == '__main__':
