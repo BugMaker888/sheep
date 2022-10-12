@@ -71,6 +71,11 @@ var material_blocks = [];
 var mask_material_blocks = [];
 var material_side;
 
+// 卡槽
+var slots = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var slot_objects = [];
+
 init();
 //render(); // remove when using next line for animation loop (requestAnimationFrame)
 animate();
@@ -121,11 +126,12 @@ function init() {
     }
     const layers = map_data['layers'];
     const level_data = map_data['levelData'];
-    for ( let i = 0; i < layers.length; i++ ) {
+    for (let i = 0; i < layers.length; i++) {
         var layer = layers[i];
         var block_datas = level_data[layer];
-        for ( let j = 0; j < block_datas.length; j ++ ) {
+        for (let j = 0; j < block_datas.length; j++) {
             var block_data = block_datas[j];
+            counter[block_data.type] += 1;
             block_data.pre_blocks = [];     // 遮挡住的方块
             block_data.next_blocks = [];    // 被遮挡的方块
             // 取走方块方法
@@ -133,16 +139,32 @@ function init() {
                 for (var i = 0; i < this.pre_blocks.length; i++) {
                     var pre_block = this.pre_blocks[i];
                     pre_block.next_blocks.pop(this);
-                    update_material(block_objects[pre_block.id], pre_block);
+                    update_block_material(block_objects[pre_block.id]);
                 }
+                counter[this.type] -= 1;
+                slots[this.type] += 1;
+                if (slots[this.type] >= 3) {
+                    slots[this.type] = 0;
+                }
+                update_slots();
             }
             // 放回方块方法
             block_data.put_back = function() {
                 for (var i = 0; i < this.pre_blocks.length; i++) {
                     var pre_block = this.pre_blocks[i];
                     pre_block.next_blocks.push(this);
-                    update_material(block_objects[pre_block.id], pre_block);
+                    update_block_material(block_objects[pre_block.id]);
                 }
+                counter[this.type] += 1;
+                slots[this.type] -= 1;
+                if (slots[this.type] < 0) {
+                    slots[this.type] = 2;
+                }
+                update_slots();
+            }
+            // 是否可以移除
+            block_data.removable = function() {
+                return this.next_blocks.length == 0;
             }
             // 找出被当前方块遮挡住的方块
             var pre_blocks = [];
@@ -174,7 +196,7 @@ function init() {
     material_side = new THREE.MeshLambertMaterial({
         map: textureLoader.load('sheep_images/side.png'),
     })
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 0; i <= 16; i++) {
         material_blocks.push(new THREE.MeshLambertMaterial({
             map: textureLoader.load(`sheep_images/${i}.png`),
         }));
@@ -184,38 +206,53 @@ function init() {
     }
 
     // 创建方块
-    var geometry = new THREE.BoxGeometry( 8, 2, 8 );
-    // 遍历每一层
-    for ( let i = 0; i < layers.length; i++ ) {
-
+    var geometry = new THREE.BoxGeometry(8, 2, 8);
+    for (let i = 0; i < layers.length; i++) {
         var layer = layers[i];
         var block_datas = level_data[layer];
-
-        // 遍历每一层的方块
-        for ( let j = 0; j < block_datas.length; j ++ ) {
-
+        for (let j = 0; j < block_datas.length; j++) {
             var block_data = block_datas[j];
             print_block_info(block_data, false);
-
-            // 创建方块
-            const mesh = new THREE.Mesh(geometry, null);
-            mesh.position.x = block_data['rolNum'] - 28;
-            mesh.position.y = (block_data['layerNum'] - 1) * 3.5;
-            mesh.position.z = block_data['rowNum'] - 36;
-            mesh.updateMatrix();
-            mesh.matrixAutoUpdate = false;
-            mesh.map_layer = layer;
-            mesh.map_layer_index = j;
-            scene.add( mesh );
-            block_objects[block_data['id']] = mesh;
-            update_material(mesh, block_data);
+            const block_object = new THREE.Mesh(geometry, null);
+            block_object.position.x = block_data['rolNum'] - 28;
+            block_object.position.y = (block_data['layerNum'] - 1) * 3.5;
+            block_object.position.z = block_data['rowNum'] - 36;
+            block_object.updateMatrix();
+            block_object.matrixAutoUpdate = false;
+            block_object.block_data = block_data;
+            scene.add(block_object);
+            block_objects[block_data['id']] = block_object;
+            update_block_material(block_object);
         }
+    }
+
+    // 卡槽方块
+    for (let i = 0; i < 7; i++) {
+        const block_object = new THREE.Mesh(geometry, null);
+        block_object.position.x = 8 * i - 24;
+        block_object.position.y = 0;
+        block_object.position.z = -64;
+        block_object.updateMatrix();
+        block_object.matrixAutoUpdate = false;
+        scene.add(block_object);
+        slot_objects.push(block_object);
+        var block_data = {
+            "type" : 0,
+            "pre_blocks" : [],
+            "next_blocks" : [],
+            "is_slot" : true,
+        }
+        block_data.removable = function() {
+            return true;
+        }
+        block_object.block_data = block_data;
+        update_block_material(block_object);
     }
 
     if (map_data['oprations'] != null) {
 
         // 高亮指示器
-        geometry = new THREE.BoxGeometry( 8, 2, 8 );
+        geometry = new THREE.BoxGeometry(8, 2, 8);
         const material = new THREE.MeshBasicMaterial({color:0xff0000, opacity:0.6, transparent:true})
         highlight_mesh = new THREE.Mesh(geometry, material);
         highlight_mesh.position.x = 1000;
@@ -223,11 +260,8 @@ function init() {
         highlight_mesh.position.z = 1000;
         highlight_mesh.updateMatrix();
         highlight_mesh.matrixAutoUpdate = false;
-        scene.add( highlight_mesh );
-
-        var block_id = map_data['oprations'][solve_index];
-        var block_object = block_objects[block_id];
-        update_highlight_mesh(block_object);
+        scene.add(highlight_mesh);
+        update_highlight_mesh();
 
         document.getElementById('auto_solve').text = "【自动解答】";
         document.getElementById('single_step_solve').text = "【单步解答】";
@@ -251,7 +285,7 @@ function init() {
 
     window.addEventListener( 'resize', onWindowResize );
 
-    document.addEventListener( 'dblclick', onMouseDoubleClick );
+    document.addEventListener( 'click', onMouseClick );
 }
 
 function onWindowResize() {
@@ -260,7 +294,7 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-function onMouseDoubleClick(event) {
+function onMouseClick(event) {
 
     //将鼠标点击位置的屏幕坐标转换成threejs中的标准坐标
     mouse.x = (event.clientX/window.innerWidth) * 2 - 1;
@@ -275,8 +309,14 @@ function onMouseDoubleClick(event) {
  
     if (intersects.length > 0) {
         var object = intersects[0].object;
-        var block_data = get_block_data_by_object(object);
-        if (block_data.next_blocks.length > 0) {
+        var block_data = object.block_data;
+        if (!block_data.removable()) {
+            return;
+        }
+        if (block_data.is_slot) {
+            return;
+        }
+        if (is_game_over()) {
             return;
         }
         print_block_info(block_data, true);
@@ -294,11 +334,6 @@ function animate() {
 
 function render() {
     renderer.render( scene, camera );
-}
-
-// 获取方块信息
-function get_block_data_by_object(object) {
-    return map_data['levelData'][object.map_layer][object.map_layer_index];
 }
 
 // 打印方块信息
@@ -335,13 +370,23 @@ function print_block_info(block_data, is_remove) {
     console.log(info);
 }
 
+// 游戏是否结束
+function is_game_over() {
+    var sum = 0;
+    for (var i = 0; i < slots.length; i++) {
+        sum += slots[i];
+    }
+    return sum >= 7;
+}
+
 // 更新方块图案
-function update_material(block_object, block_data) {
+function update_block_material(block_object) {
     var material = null;
-    if (block_data.next_blocks.length > 0) {
-        material = mask_material_blocks[block_data.type-1];
+    var block_data = block_object.block_data; 
+    if (block_data.removable()) {
+        material = material_blocks[block_data.type];
     } else {
-        material = material_blocks[block_data.type-1];
+        material = mask_material_blocks[block_data.type];
     }
     var materials = block_object.material;
     if (materials == null) {
@@ -352,11 +397,41 @@ function update_material(block_object, block_data) {
     block_object.material = materials;
 }
 
+// 更新卡槽方块
+function update_slots() {
+    for (let i = 0; i < 7; i++) {
+        var object = slot_objects[i];
+        object.block_data.type = 0;
+        update_block_material(object);
+    }
+
+    var index = 0;
+    for (let i = 0; i < slots.length; i++) {
+        for (let j = 0; j < slots[i]; j++) {
+            if (index >= 7) {
+                return;
+            }
+            var object = slot_objects[index];
+            object.block_data.type = i;
+            update_block_material(object);
+            index += 1;
+        }
+    }
+}
+
 // 更新高亮方块位置
-function update_highlight_mesh(object) {
-    highlight_mesh.position.x = object.position.x;
-    highlight_mesh.position.y = object.position.y + 0;
-    highlight_mesh.position.z = object.position.z;
+function update_highlight_mesh() {
+    if (solve_index < map_data['oprations'].length) {
+        var block_id = map_data['oprations'][solve_index];
+        var block_object = block_objects[block_id];
+        highlight_mesh.position.x = block_object.position.x;
+        highlight_mesh.position.y = block_object.position.y;
+        highlight_mesh.position.z = block_object.position.z;
+    } else {
+        highlight_mesh.position.x = 1000;
+        highlight_mesh.position.y = 1000;
+        highlight_mesh.position.z = 1000;
+    }
     highlight_mesh.updateMatrix();
 }
 
@@ -365,8 +440,11 @@ function undo() {
     const object = removed_blocks.pop();
     if (object) {
         scene.add(object);
-        var block_data = get_block_data_by_object(object);
-        block_data.put_back();
+        object.block_data.put_back();
+        if (solve_index > 0) {
+            solve_index -= 1;
+        }
+        update_highlight_mesh();
     }
 }
 
@@ -396,17 +474,13 @@ function single_step_solve() {
     var block_id = map_data['oprations'][solve_index];
     var block_object = block_objects[block_id];
     scene.remove(block_object);
-    var block_data = get_block_data_by_object(block_object);
-    print_block_info(block_data, true);
-    block_data.take_away();
-    solve_index += 1
-    if (solve_index < map_data['oprations'].length) {
-        block_id = map_data['oprations'][solve_index];
-        block_object = block_objects[block_id];
-        update_highlight_mesh(block_object);
-    } else {
-        scene.remove(highlight_mesh);
-    }
+    removed_blocks.push(block_object);
+    print_block_info(block_object.block_data, true);
+    block_object.block_data.take_away();
+    solve_index += 1;
+    update_highlight_mesh();
+    //console.log("counts :", counter);
+    //console.log("slots  :", slots);
 }
 
 function bindEvent(){

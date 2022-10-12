@@ -61,12 +61,12 @@
             if(is_array($_GET)&&count($_GET)>0){//判断是否有Get参数
                 if(isset($_GET["id"])){//判断所需要的参数是否存在，isset用来检测变量是否设置，返回true or false
                     $id = $_GET["id"];//存在
-                    echo "<script type='module' src='./map_data.php?id=$id'></script>";
+                    echo "<script type='module' src='./map_data.php?id=$id'></script>\n";
                 } else {
-                    echo "<script type='module' src='./map_data.php'></script>";
+                    echo "<script type='module' src='./map_data.php'></script>\n";
                 }
             } else {
-                echo "<script type='module' src='./map_data.php'></script>";
+                echo "<script type='module' src='./map_data.php'></script>\n";
             }
         ?>
     </body>
