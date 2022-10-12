@@ -3,7 +3,6 @@ from mitmproxy import ctx
 from autoSolve import auto_solve
 import execjs
 import json
-import os
 import _thread
 
 
@@ -38,7 +37,7 @@ class Sheep():
         print("==========================================")
 
         # 判断地图文件是否存在
-        if not os.path.exists(self.map_data_path):
+        if not isfile(self.map_data_path):
             return
 
         # 读取原始地图数据
@@ -80,7 +79,7 @@ class Sheep():
             f.write(json.dumps(map_data, indent=4))
         print("已将当前关卡数据保存到当前路径下 map_data.json 文件！")
         # 同步进行自动求解
-        if os.path.isfile("config.json"):
+        if isfile("config.json"):
             try:
                 with open("config.json","r",encoding="utf8") as f:
                     configs = json.loads(f.read())
