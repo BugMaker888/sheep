@@ -29,26 +29,15 @@ def stop_thread(thread):
     _async_raise(thread.ident, SystemExit)
 
 
-def auto_solve(map_data, issort, percent, timeout):
+def auto_solve(map_data, issort, percent, timeout, threadName):
     # 自动求解
     sheep_solver = SheepSolver(map_data)
     sheep_solver.init_card_data()
     start_time = time.time()
-    if issort != "true" and issort != "reverse" and percent == 0.85:
-        threadName = "普通模式"
-    elif issort == "reverse" and percent == 0.85:
-        threadName = "高层优先模式"
-    elif issort != "true" and issort != "reverse" and percent == 0:
-        threadName = "优先移除两张相同类型的手牌模式"
-    elif issort == "reverse" and percent == 0:
-        threadName = "高层优先且优先移除两张相同类型的手牌模式"
-    else:
-        threadName = "自定义模式"
     #try:
     thread1 = threading.Thread(target=sheep_solver.solve, name=threadName, args=(issort, percent,))
     #sheep_solver.solve(issort, percent)
     thread1.start()
-    print("启动线程：%s"%thread1.getName())
     second = 0
     # while second < 13:
     #     time.sleep(1)
@@ -67,7 +56,7 @@ def auto_solve(map_data, issort, percent, timeout):
                 exit(0)
         time.sleep(1)
         second += 1
-        print("\r进度：%d/%d"%(second, timeout),end="")
+        print("\r%s进度：%d/%d"%(threadName, second, timeout),end="")
     #except FunctionTimedOut:
         #print("自动求解超时！当前算法有些力不从心，建议放弃挑战并重新开始！")
         #self.post_map_data(map_data)
@@ -75,7 +64,7 @@ def auto_solve(map_data, issort, percent, timeout):
     end_time = time.time()
     result = sheep_solver.get_result()
     if result != "牌面无解":
-        print("计算用时: {}".format(end_time - start_time))
+        print("计算用时: {:.2f}".format(end_time - start_time))
         with open("map_data_oprations.json","w",encoding="utf8") as f:
             f.write(json.dumps(result, indent=4))
         with open("html/sheep_map/map_data.js","w",encoding="utf8") as f:
@@ -107,7 +96,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--issort', dest='issort', type=str, default="", help="是否对可选牌进行排序，默认不排序。\ntrue：从小到大排序\nreverse：从大到小排序\n为空或者其他：不排序")
     parser.add_argument('-p', '--percent', dest='percent', type=float, default=0.85, help="进度超过多少时优先移除已有两张相同类型的手牌，取值范围0~1。")
     parser.add_argument('-i', '--input', dest='input', type=str, default="map_data.json", help="关卡json数据文件路径，默认当前路径下 map_data.json。")
-    parser.add_argument('-t', '--timeout', dest='timeout', type=int, default=180, help="自动求解超时时间，单位秒")
+    parser.add_argument('-t', '--timeout', dest='timeout', type=int, default=90, help="自动求解超时时间，单位秒")
     args = parser.parse_args()
     if os.path.isfile(args.input):
         with open(args.input, "r", encoding="utf8") as f:
@@ -122,5 +111,15 @@ if __name__ == '__main__':
     if args.percent > 1 or args.percent < 0:
         input("参数 percent[p] 取值范围为 0~1 !"%args.input)
         exit(1)
+    if args.issort != "true" and args.issort != "reverse" and args.percent == 0.85:
+        threadName = "普通模式"
+    elif args.issort == "reverse" and args.percent == 0.85:
+        threadName = "高层优先模式"
+    elif args.issort != "true" and args.issort != "reverse" and args.percent == 0:
+        threadName = "优先移除两张相同类型的手牌模式"
+    elif args.issort == "reverse" and args.percent == 0:
+        threadName = "高层优先且优先移除两张相同类型的手牌模式"
+    else:
+        threadName = "自定义模式"
     print("开始求解，请稍等%d秒..."%args.timeout)
-    auto_solve(map_data, args.issort, args.percent, args.timeout)
+    auto_solve(map_data, args.issort, args.percent, args.timeout, threadName)
