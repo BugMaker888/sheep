@@ -1,0 +1,4 @@
+func_timeout==4.3.5
+mitmproxy==8.1.0
+PyExecJS==1.5.1
+requests==2.26.0

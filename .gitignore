@@ -1,3 +1,9 @@
 *.swp
 .idea/
 node_modules/
+*.json
+!config.json
+test.py
+__pycache__/
+business/__pycache__/
+html/sheep_map/test.html

@@ -1,8 +1,34 @@
+from os.path import isfile
 from mitmproxy import ctx
-import requests
+from autoSolve import auto_solve
+from subprocess import Popen, PIPE, STDOUT
 import execjs
 import json
-import os
+import _thread
+
+
+def cmd(command):
+    subp = Popen(args=command, shell=True, encoding='utf8', stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    subp.wait()
+    if subp.poll() == 0:
+        output = ""
+        for i in (subp.communicate()[0]).split("\n"):
+            if "进度" in i and output == "":
+                output += "\n%s：\033[0m"%i[:i.index("进度")]
+            elif "超时" in i:
+                output += "\033[0;33;40m%s"%i[i.index("自动求解超时"):]
+            elif "无解" in i:
+                output += "\033[0;33;40m%s"%i[i.index("牌面无解"):]
+            elif "计算用时" in i:
+                output += "\033[0;32;40m%s | "%i[i.index("计算用时"):]
+            elif "当前关卡3D地图地址" in i:
+                output += "%s"%i
+            elif "地图生成失败" in i:
+                output += "%s"%i
+        print(output)
+    else:
+        print("失败")
+        print(subp.communicate()[0])
 
 
 class Sheep():
@@ -36,7 +62,7 @@ class Sheep():
         print("==========================================")
 
         # 判断地图文件是否存在
-        if not os.path.exists(self.map_data_path):
+        if not isfile(self.map_data_path):
             return
 
         # 读取原始地图数据
@@ -71,19 +97,76 @@ class Sheep():
                     continue
                 block_data["type"] = block_types[index]
                 index += 1
-
-        # 保存地图数据
-        # data_string = json.dumps(map_data)
-        r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data), headers={'Content-Type': 'application/json'})
-        r_str = r.text
-        url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
-        if "id" not in url:
-            print("3D地图生成失败！")
-        else:
-            url = "https://ylgy.endless084.top/%s"%url
-            print("当前关卡3D地图地址：%s"%url)
-        #import webbrowser
-        #webbrowser.open(url, new=0, autoraise=True)
+        
         print("==========================================")
+        # 保存关卡数据到文件
+        with open("map_data.json", "w", encoding="utf8") as f:
+            f.write(json.dumps(map_data, indent=4))
+        print("已将当前关卡数据保存到当前路径下 map_data.json 文件！")
+        # 同步进行自动求解
+        if isfile("config.json"):
+            try:
+                with open("config.json","r",encoding="utf8") as f:
+                    configs = json.loads(f.read())
+                if "issort" not in configs or "percent" not in configs or "timeout" not in configs or ("timeout" in configs and type(configs["timeout"]) != int) or ("percent" in configs and type(configs["percent"]) != float):
+                    print("\n当前配置文件存在错误，将使用默认配置求解！")
+                    configs = {"issort":"","percent":0.85,"timeout":60}
+                    with open("config.json","w",encoding="utf8") as f:
+                        f.write(json.dumps(configs,indent=4))
+                else:
+                    print("\n将使用配置文件 config.json 的配置求解！")
+            except:
+                print("\n当前配置文件存在错误，将使用默认配置求解！")
+                configs = {"issort":"","percent":0.85,"timeout":60}
+                with open("config.json","w",encoding="utf8") as f:
+                    f.write(json.dumps(configs,indent=4))
+        else:
+            print("\n当前配置文件不存在，将使用默认配置求解！")
+            configs = {"issort":"","percent":0.85,"timeout":60}
+            with open("config.json","w",encoding="utf8") as f:
+                f.write(json.dumps(configs,indent=4))
+        
+        issort = configs["issort"]
+        percent = configs["percent"]
+        timeout = configs["timeout"]
+
+        if issort != "true" and issort != "reverse" and percent == 0.85:
+            threadName = "普通模式"
+            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
+            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
+            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+        elif issort == "reverse" and percent == 0.85:
+            threadName = "高层优先模式"
+            command1 = "python3 autoSolve.py -t %d"%timeout
+            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
+            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+        elif issort != "true" and issort != "reverse" and percent == 0:
+            threadName = "优先移除两张相同类型的手牌模式"
+            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
+            command2 = "python3 autoSolve.py -t %d"%timeout
+            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+        elif issort == "reverse" and percent == 0:
+            threadName = "高层优先且优先移除两张相同类型的手牌模式"
+            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
+            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
+            command3 = "python3 autoSolve.py -t %d"%timeout
+        else:
+            threadName = "自定义模式"
+            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
+            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
+            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+            command4 = "python3 autoSolve.py -p 0 -t %d"%timeout
+        
+        try:
+            #print("\n建议同时在新的命令行终端分别同时运行以下命令：\npython3 autoSolve.py -s reverse\npython3 autoSolve.py -p 0\npython3 autoSolve.py -s reverse -p 0\n")
+            print("开始求解，请稍等%d秒..."%timeout)
+            _thread.start_new_thread( auto_solve, (map_data, issort, percent, timeout, threadName,) )
+            _thread.start_new_thread( cmd, (command1,))
+            _thread.start_new_thread( cmd, (command2,))
+            _thread.start_new_thread( cmd, (command3,))
+            if threadName == "自定义模式":
+                _thread.start_new_thread( cmd, (command4,))
+        except Exception as e:
+            print ("Error: 无法启动线程\n%s"%e)
 
 addons = [Sheep()]
