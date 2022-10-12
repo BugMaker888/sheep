@@ -1,7 +1,5 @@
-> PHP版本，Fork 自 [BugMaker888/sheep](https://github.com/BugMaker888/sheep)<br>
-求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高
-
-> 经过一些调整和测试，四种模式同时尝试有一定概率在短时间内得到解，甚至是多解，建议超过60~90秒就放弃重试！
+> **求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高<br>
+经过一些调整和测试，四种模式同时尝试（已添加到抓包脚本中）有一定概率在短时间内得到解，甚至是多解，建议超过60~90秒就放弃重试！**
 ![image](https://user-images.githubusercontent.com/43313501/195137874-747484b7-4f49-48f0-b95f-65bfb387d560.png)
 
 
@@ -25,7 +23,7 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 
 搭建好 Web服务环境后需要将`autoSolve.py`中`post_map_data`函数中的服务器地址换成你自己的。
 
-也可以不换直接用我写好的的也行。
+> **也可以不换直接用我写好的的也行：[https://ylgy.endless084.top](https://ylgy.endless084.top)**
 
 本人因为想将3d地图放在 vps 上，所以使用的是 nginx 虚拟主机（域名）搭配 php 环境，mitmproxy 抓包放在了本地电脑上。
 
