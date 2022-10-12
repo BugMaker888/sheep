@@ -78,6 +78,8 @@ def auto_solve(map_data, issort, percent, timeout):
         print("计算用时: {}".format(end_time - start_time))
         with open("map_data_oprations.json","w",encoding="utf8") as f:
             f.write(json.dumps(result, indent=4))
+        with open("html/sheep_map/map_data.js","w",encoding="utf8") as f:
+            f.write(f"const map_data = {json.dumps(result, indent=4)};")
         print("当前关卡自动求解步骤已保存到当前路径下 map_data_oprations.json 文件！")
         print("==========================================")
         post_map_data(result)
