@@ -203,14 +203,14 @@
                 // 方块图案
                 const textureLoader = new THREE.TextureLoader();
                 material_side = new THREE.MeshLambertMaterial({
-                    map: textureLoader.load('sheep_images/side.png'),
+                    map: textureLoader.load('images/side.png'),
                 })
                 for (let i = 0; i <= 16; i++) {
                     material_blocks.push(new THREE.MeshLambertMaterial({
-                        map: textureLoader.load(`sheep_images/${i}.png`),
+                        map: textureLoader.load(`images/${i}.png`),
                     }));
                     mask_material_blocks.push(new THREE.MeshLambertMaterial({
-                        map: textureLoader.load(`sheep_images/mask/${i}.png`),
+                        map: textureLoader.load(`images/mask/${i}.png`),
                     }));
                 }
 
