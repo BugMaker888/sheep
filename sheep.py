@@ -1,5 +1,6 @@
 from mitmproxy import ctx
 from os.path import isfile
+from datetime import date
 import execjs
 import json
 import os
@@ -12,6 +13,7 @@ class Sheep():
         self.js_code = open("shuffle.js", encoding="utf-8").read()
         self.map_data_path = "./map_data.txt"
         self.map_data_topic_path = "./map_data_topic.txt"
+        self.today = date.today().day
 
     def response(self, flow):
         """ 接口响应方法 """
@@ -32,13 +34,13 @@ class Sheep():
             # 保存原始地图数据
             response = json.loads(flow.response.content)
             # 判断是否是话题挑战
-            if response["levelKey"] > 100000:
-                with open(self.map_data_path, "w") as f:
+            if response["levelKey"] == 100000 + self.today:
+                with open(self.map_data_topic_path, "w") as f:
                     f.write(json.dumps(response, indent=4))
                     f.close()
                 self.make_map_data(True)
-            elif response["levelKey"] > 90000 and response["levelKey"] < 100000:
-                with open(self.map_data_topic_path, "w") as f:
+            elif response["levelKey"] == 90000 + self.today:
+                with open(self.map_data_path, "w") as f:
                     f.write(json.dumps(response, indent=4))
                     f.close()
                 self.make_map_data(False)
