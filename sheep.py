@@ -32,16 +32,16 @@ class Sheep():
             # 保存原始地图数据
             response = json.loads(flow.response.content)
             # 判断是否是话题挑战
-            if response["levelKey"] > 90000:
+            if response["levelKey"] > 100000:
                 with open(self.map_data_path, "w") as f:
                     f.write(json.dumps(response, indent=4))
                     f.close()
-                self.make_map_data(False)
-            else:
+                self.make_map_data(True)
+            elif response["levelKey"] > 90000 and response["levelKey"] < 100000:
                 with open(self.map_data_topic_path, "w") as f:
                     f.write(json.dumps(response, indent=4))
                     f.close()
-                self.make_map_data(True)
+                self.make_map_data(False)
 
     def make_map_data(self, istopic):
         """ 制作地图数据 """
