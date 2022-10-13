@@ -31,13 +31,12 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 
 在本项目目录下分别执行以下命令启动网页服务器：
 ```
-npm i -g http-server
-http-server
+cd html/sheep_map
+npm install -g live-server
+live-server
 ```
 
-这时便可以使用网址 [http://localhost:8080/html/sheep_map/sheep.html](http://localhost:8080/html/sheep_map/sheep.html) 访问默认的3d地图。
-
-> 默认使用8080端口，如果8080端口被占用，终端会显示新的端口。
+执行后会浏览器会自动打开3d地图网页。
 ---
 
 ### 二、克隆本项目
@@ -103,7 +102,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 目测不支持抖音小游戏版抓包，微信小游戏版支持。
 
-主页面的`再次挑战`会重新打乱地图，但`关卡原始地图数据`不会刷新；游戏失败后的`重新挑战`不会重新打乱地图。
+主页面的`再次挑战`会重新打乱地图，但`关卡原始地图数据`不会刷新。
 
 你可以在命令行的输出中看出地图是否刷新，3d地图的网页地址也会在命令行输出：
 
