@@ -2,6 +2,7 @@ from os.path import isfile
 from mitmproxy import ctx
 from autoSolve import auto_solve
 from subprocess import Popen, PIPE, STDOUT
+from datetime import date
 import execjs
 import json
 import _thread
@@ -38,6 +39,7 @@ class Sheep():
         self.js_code = open("shuffle.js", encoding="utf-8").read()
         self.map_data_path = "./map_data.txt"
         self.map_data_topic_path = "./map_data_topic.txt"
+        self.today = date.today().day
 
     def response(self, flow):
         """ 接口响应方法 """
@@ -57,17 +59,18 @@ class Sheep():
                 return
             # 保存原始地图数据
             response = json.loads(flow.response.content)
+            print(type(response["levelKey"]),response["levelKey"])
             # 判断是否是话题挑战
-            if response["levelKey"] > 90000:
-                with open(self.map_data_path, "w") as f:
-                    f.write(json.dumps(response, indent=4))
-                    f.close()
-                self.make_map_data(False)
-            else:
+            if response["levelKey"] == 100000 + self.today:
                 with open(self.map_data_topic_path, "w") as f:
                     f.write(json.dumps(response, indent=4))
                     f.close()
                 self.make_map_data(True)
+            elif response["levelKey"] == 90000 + self.today:
+                with open(self.map_data_path, "w") as f:
+                    f.write(json.dumps(response, indent=4))
+                    f.close()
+                self.make_map_data(False)
 
     def make_map_data(self, istopic):
         """ 制作地图数据 """
