@@ -33,13 +33,12 @@ cd sheep/
 
 在本项目目录下分别执行以下命令启动网页服务器：
 ```
-npm i -g http-server
-http-server
+cd html/
+npm install -g live-server
+live-server
 ```
 
-这时便可以使用网址 [http://localhost:8080/html/sheep.html](http://localhost:8080/html/sheep.html) 访问默认的3d地图。
-
-> 默认使用8080端口，如果8080端口被占用，终端会显示新的端口。
+执行后会浏览器会自动打开3d地图网页。
 
 ---
 
