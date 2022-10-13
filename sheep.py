@@ -1,5 +1,4 @@
 from mitmproxy import ctx
-from os.path import isfile
 from datetime import date
 import execjs
 import json
@@ -13,7 +12,6 @@ class Sheep():
         self.js_code = open("shuffle.js", encoding="utf-8").read()
         self.map_data_path = "./map_data.txt"
         self.map_data_topic_path = "./map_data_topic.txt"
-        self.today = date.today().day
 
     def response(self, flow):
         """ 接口响应方法 """
@@ -23,41 +21,46 @@ class Sheep():
             self.seed = response["data"]["map_seed"]
             self.make_map_data(False)
         elif "topic/game_start" in flow.request.path:
-            # 获取随机种子的接口，随机种子存储到self.seed中
+            # 今日话题获取随机种子的接口
             response = json.loads(flow.response.content)
             self.seed = response["data"]["map_seed"]
             self.make_map_data(True)
-        elif "maps" in flow.request.path:
+        elif "/maps/" in flow.request.path:
             # 获取地图数据的接口，不解析第一关
-            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path or "a92ee0f5f116b13b7b594e67a53defad" in flow.request.path:
+            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path:
+                # 游戏第一关
                 return
-            # 保存原始地图数据
+            if "a92ee0f5f116b13b7b594e67a53defad" in flow.request.path:
+                # 今日话题第一关
+                return
+            # 解析原始地图数据
             response = json.loads(flow.response.content)
             # 判断是否是话题挑战
-            if response["levelKey"] == 100000 + self.today:
-                with open(self.map_data_topic_path, "w") as f:
-                    f.write(json.dumps(response, indent=4))
-                    f.close()
-                self.make_map_data(True)
-            elif response["levelKey"] == 90000 + self.today:
-                with open(self.map_data_path, "w") as f:
-                    f.write(json.dumps(response, indent=4))
-                    f.close()
-                self.make_map_data(False)
+            is_topic = False
+            if response["levelKey"] == 100000 + date.today().day:
+                is_topic = True
+            # 保存原始地图数据
+            map_data_path = self.get_map_data_path(is_topic)
+            with open(map_data_path, "w") as f:
+                f.write(json.dumps(response, indent=4))
+                f.close()
+            self.make_map_data(is_topic)
 
-    def make_map_data(self, istopic):
+    def get_map_data_path(self, is_topic):
+        """ 获取文件路径 """
+        if is_topic:
+            return self.map_data_topic_path
+        else:
+            return self.map_data_path
+
+    def make_map_data(self, is_topic):
         """ 制作地图数据 """
 
         print("==========================================")
 
-        # 判断是否是话题挑战
-        if istopic:
-            map_data_path = self.map_data_topic_path
-        else:
-            map_data_path = self.map_data_path
-        
         # 判断原始地图文件是否存在
-        if not isfile(map_data_path):
+        map_data_path = self.get_map_data_path(is_topic)
+        if not os.path.isfile(map_data_path):
             return
 
         # 读取原始地图数据
