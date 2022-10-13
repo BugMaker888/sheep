@@ -29,14 +29,19 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 
 （二）使用`Node.js`
 
-在本项目目录下分别执行以下命令启动网页服务器：
+安装网页服务器：
 ```
-cd html/sheep_map
 npm install -g live-server
+```
+
+启动网页服务器，在本项目目录下分别执行以下命令启动网页服务器：
+```
+cd html/map_data
 live-server
 ```
 
-执行后会浏览器会自动打开3d地图网页。
+执行后会浏览器会自动打开3d地图网页。算出解后刷新网页，就可以看到最新的游戏3d地图了。
+
 ---
 
 ### 二、克隆本项目
@@ -44,7 +49,7 @@ live-server
 使用以下命令将本项目克隆到本地，并进入项目目录：
 ```
 git clone https://github.com/longhuan1999/sheep.git
-cd sheep/
+cd sheep
 ```
 
 > MacOS系统使用终端执行，Windows系统使用Powershell。
