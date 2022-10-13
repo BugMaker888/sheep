@@ -22,7 +22,7 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 使用以下命令将本项目克隆到本地，并进入项目目录：
 ```
 git clone https://github.com/BugMaker888/sheep.git
-cd sheep/
+cd sheep
 ```
 
 > MacOS系统使用终端执行，Windows系统使用Powershell。
@@ -31,10 +31,17 @@ cd sheep/
 
 ### 三、启动网页服务器
 
+#### 1、安装网页服务器
+
+```
+npm install -g live-server
+```
+
+#### 2、启动网页服务器
+
 在本项目目录下分别执行以下命令启动网页服务器：
 ```
-cd html/
-npm install -g live-server
+cd html
 live-server
 ```
 
