@@ -1,4 +1,5 @@
 from mitmproxy import ctx
+from os.path import isfile
 import execjs
 import json
 import os
@@ -10,6 +11,7 @@ class Sheep():
         self.seed = [0, 0, 0, 0]
         self.js_code = open("shuffle.js", encoding="utf-8").read()
         self.map_data_path = "./map_data.txt"
+        self.map_data_topic_path = "./map_data_topic.txt"
 
     def response(self, flow):
         """ 接口响应方法 """
@@ -17,29 +19,47 @@ class Sheep():
             # 获取随机种子的接口，随机种子存储到self.seed中
             response = json.loads(flow.response.content)
             self.seed = response["data"]["map_seed"]
-            self.make_map_data()
+            self.make_map_data(False)
+        elif "topic/game_start" in flow.request.path:
+            # 获取随机种子的接口，随机种子存储到self.seed中
+            response = json.loads(flow.response.content)
+            self.seed = response["data"]["map_seed"]
+            self.make_map_data(True)
         elif "maps" in flow.request.path:
             # 获取地图数据的接口，不解析第一关
-            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path:
+            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path or "a92ee0f5f116b13b7b594e67a53defad" in flow.request.path:
                 return
-            # 保存地图数据
+            # 保存原始地图数据
             response = json.loads(flow.response.content)
-            with open(self.map_data_path, "w") as f:
-                f.write(json.dumps(response, indent=4))
-                f.close()
-            self.make_map_data()
+            # 判断是否是话题挑战
+            if response["levelKey"] > 90000:
+                with open(self.map_data_path, "w") as f:
+                    f.write(json.dumps(response, indent=4))
+                    f.close()
+                self.make_map_data(False)
+            else:
+                with open(self.map_data_topic_path, "w") as f:
+                    f.write(json.dumps(response, indent=4))
+                    f.close()
+                self.make_map_data(True)
 
-    def make_map_data(self):
+    def make_map_data(self, istopic):
         """ 制作地图数据 """
 
         print("==========================================")
 
-        # 判断地图文件是否存在
-        if not os.path.exists(self.map_data_path):
+        # 判断是否是话题挑战
+        if istopic:
+            map_data_path = self.map_data_topic_path
+        else:
+            map_data_path = self.map_data_path
+        
+        # 判断原始地图文件是否存在
+        if not isfile(map_data_path):
             return
 
         # 读取原始地图数据
-        map_data = json.loads(open(self.map_data_path).read())
+        map_data = json.loads(open(map_data_path).read())
 
         # 根据"blockTypeData"字段按顺序生成所有类型的方块，存放到数组
         block_type_data = map_data["blockTypeData"]
