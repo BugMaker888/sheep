@@ -80,7 +80,7 @@ class Sheep():
         else:
             return self.map_data_path
 
-    def make_map_data(self, istopic):
+    def make_map_data(self, is_topic):
         """ 制作地图数据 """
 
         print("==========================================")
