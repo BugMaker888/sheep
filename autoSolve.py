@@ -65,11 +65,11 @@ def auto_solve(map_data, issort, percent, timeout, threadName):
     result = sheep_solver.get_result()
     if result != "牌面无解":
         print("\033[0;32;40m计算用时：\033[0m\033[0;34;40m {:.2f}\033[0m".format(end_time - start_time))
-        with open("map_data_oprations.json","w",encoding="utf8") as f:
+        with open("map_data_operations.json","w",encoding="utf8") as f:
             f.write(json.dumps(result, indent=4))
         with open("html/sheep_map/map_data.js","w",encoding="utf8") as f:
             f.write(f"const map_data = {json.dumps(result, indent=4)};")
-        print("当前关卡自动求解步骤已保存到当前路径下 map_data_oprations.json 文件！")
+        print("当前关卡自动求解步骤已保存到当前路径下 map_data_operations.json 文件！")
         print("==========================================")
         post_map_data(result)
     else:

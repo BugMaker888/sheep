@@ -246,7 +246,7 @@ function init() {
         update_block_material(block_object);
     }
 
-    if (map_data['oprations'] != null) {
+    if (map_data['operations'] != null) {
 
         // 高亮指示器
         geometry = new THREE.BoxGeometry(8, 2, 8);
@@ -418,8 +418,8 @@ function update_slots() {
 
 // 更新高亮方块位置
 function update_highlight_mesh() {
-    if (solve_index < map_data['oprations'].length) {
-        var block_id = map_data['oprations'][solve_index];
+    if (solve_index < map_data['operations'].length) {
+        var block_id = map_data['operations'][solve_index];
         var block_object = block_objects[block_id];
         highlight_mesh.position.x = block_object.position.x;
         highlight_mesh.position.y = block_object.position.y;
@@ -462,13 +462,13 @@ function auto_solve() {
 
 // 单步解答
 function single_step_solve() {
-    if (map_data['oprations'] == null) {
+    if (map_data['operations'] == null) {
         return;
     }
-    if (solve_index >= map_data['oprations'].length) {
+    if (solve_index >= map_data['operations'].length) {
         return;
     }
-    var block_id = map_data['oprations'][solve_index];
+    var block_id = map_data['operations'][solve_index];
     var block_object = block_objects[block_id];
     scene.remove(block_object);
     removed_blocks.push(block_object);
