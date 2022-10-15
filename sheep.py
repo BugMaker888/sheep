@@ -2,7 +2,6 @@ from os.path import isfile
 from mitmproxy import ctx
 from autoSolve import auto_solve
 from subprocess import Popen, PIPE, STDOUT
-from datetime import date
 import execjs
 import json
 import _thread
@@ -53,19 +52,13 @@ class Sheep():
             self.seed = response["data"]["map_seed"]
             self.make_map_data(True)
         elif "maps" in flow.request.path:
-           # 获取地图数据的接口，不解析第一关
-            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path:
-                # 游戏第一关
-                return
             # 解析原始地图数据
             response = json.loads(flow.response.content)
-            # 判断是否是第二关
+            # 不解析第一关
             if response["levelKey"] < 90000:
                 return
             # 判断是否是话题挑战
-            is_topic = False
-            if response["levelKey"] == 100000 + date.today().day:
-                is_topic = True
+            is_topic = (response["levelKey"] >= 100000)
             # 保存原始地图数据
             map_data_path = self.get_map_data_path(is_topic)
             with open(map_data_path, "w") as f:
