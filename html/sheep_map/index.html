@@ -325,6 +325,10 @@
                     if (block_data.is_slot) {
                         return;
                     }
+                    if (map_data['operations'] != null) {
+                        alert("有解的情况禁止手动移除方块，不然把解答途中的方块移除掉会导致局面出现问题。");
+                        return;
+                    }
                     if (is_game_over()) {
                         return;
                     }
