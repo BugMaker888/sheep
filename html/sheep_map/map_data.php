@@ -16,32 +16,29 @@
     if(is_array($_GET)&&count($_GET)>0){//判断是否有Get参数
         if(isset($_GET["id"])){//判断所需要的参数是否存在，isset用来检测变量是否设置，返回true or false
             $id = $_GET["id"];//存在
-            $ret1 = $db->query("SELECT ID,MAP_INFO from MAPS WHERE ID = $id");
-            while($row = $ret1->fetchArray()){
-                $map_info = $row["MAP_INFO"];
-                echo "const map_data = $map_info;\n";  
-            }
-            if($map_info == null){
-                echo "window.alert('没有查询到 id=$id 的关卡地图数据！关卡地图数据可能已过期或者id不正确!')\n";
-            }
-        } else {
-            $ret1 = $db->query("SELECT MAX(ID),MAP_INFO from MAPS");
-            while($row = $ret1->fetchArray()){
-                $map_info = $row["MAP_INFO"];
-                echo "const map_data = $map_info;\n";  
-            }
         }
-    } else {
+    }
+    if($id == null){
         $ret1 = $db->query("SELECT MAX(ID),MAP_INFO from MAPS");
         while($row = $ret1->fetchArray()){
             $map_info = $row["MAP_INFO"];
+            $id = $row["MAX(ID)"];
             echo "const map_data = $map_info;\n";  
+        }
+    } else {
+        $ret1 = $db->query("SELECT ID,MAP_INFO from MAPS WHERE ID = $id");
+        while($row = $ret1->fetchArray()){
+            $map_info = $row["MAP_INFO"];
+            echo "const map_data = $map_info;\n";  
+        }
+        if($map_info == null){
+            echo "window.alert('没有查询到 id=$id 的关卡地图数据！关卡地图数据可能已过期或者id不正确!')\n";
         }
     }
     $ret2 = $db->query("SELECT MIN(ID) from MAPS");
     while($row = $ret2->fetchArray()){
         $min_id = $row["MIN(ID)"];
-        if(($id - $min_id) >= 50){
+        if(($id - $min_id) >= 100){
             $ret3 = $db->exec("DELETE from MAPS where ID=$min_id;");
             if(!$ret3){
                 echo "window.alert('".$db->lastErrorMsg()."');\n";
@@ -249,7 +246,7 @@ function init() {
         update_block_material(block_object);
     }
 
-    if (map_data['oprations'] != null) {
+    if (map_data['operations'] != null) {
 
         // 高亮指示器
         geometry = new THREE.BoxGeometry(8, 2, 8);
@@ -421,8 +418,8 @@ function update_slots() {
 
 // 更新高亮方块位置
 function update_highlight_mesh() {
-    if (solve_index < map_data['oprations'].length) {
-        var block_id = map_data['oprations'][solve_index];
+    if (solve_index < map_data['operations'].length) {
+        var block_id = map_data['operations'][solve_index];
         var block_object = block_objects[block_id];
         highlight_mesh.position.x = block_object.position.x;
         highlight_mesh.position.y = block_object.position.y;
@@ -465,13 +462,13 @@ function auto_solve() {
 
 // 单步解答
 function single_step_solve() {
-    if (map_data['oprations'] == null) {
+    if (map_data['operations'] == null) {
         return;
     }
-    if (solve_index >= map_data['oprations'].length) {
+    if (solve_index >= map_data['operations'].length) {
         return;
     }
-    var block_id = map_data['oprations'][solve_index];
+    var block_id = map_data['operations'][solve_index];
     var block_object = block_objects[block_id];
     scene.remove(block_object);
     removed_blocks.push(block_object);

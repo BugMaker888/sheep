@@ -125,18 +125,18 @@ class SheepSolver(object):
 
     def get_result(self):
         if self.picked_list != []:
-            oprations = []
+            operations = []
             for i in self.picked_list:
                 count = 0
                 for data_list in self.map_data["levelData"].values():
                     for data_item in data_list:
                         count += 1
                         if count == i:
-                            oprations.append(data_item["id"])
+                            operations.append(data_item["id"])
                             break
                     if count == i:
                         break
-            self.map_data["oprations"] = oprations
+            self.map_data["operations"] = operations
             return self.map_data
         else:
             return "牌面无解"

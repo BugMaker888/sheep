@@ -7,3 +7,6 @@ test.py
 __pycache__/
 business/__pycache__/
 html/sheep_map/test.html
+html/test.html
+html/sheep_maps.db
+html/*.py

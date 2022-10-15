@@ -1,3 +1,6 @@
+> 关卡数据中的解答步骤字段名 "oprations" 已纠正为 "operations"，请使用最新项目！<br>
+[https://ylgy.endless084.top](https://ylgy.endless084.top) 做了兼容，提交的关卡数据中的解答步骤字段名还是 "oprations" 也能查看3D地图解答，但会有弹窗提示。
+
 > **求解算法来自 [NB-Dragon/SheepSolver](https://github.com/NB-Dragon/SheepSolver) ，5分钟内求解成功率暂时不高<br>
 经过一些调整和测试，四种模式同时尝试（已添加到抓包脚本中）有一定概率在短时间内得到解，甚至是多解，建议超过60~90秒就放弃重试！**
 ![image](https://user-images.githubusercontent.com/43313501/195137874-747484b7-4f49-48f0-b95f-65bfb387d560.png)
@@ -29,15 +32,19 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 
 （二）使用`Node.js`
 
-在本项目目录下分别执行以下命令启动网页服务器：
+安装网页服务器：
 ```
-npm i -g http-server
-http-server
+npm install -g live-server
 ```
 
-这时便可以使用网址 [http://localhost:8080/html/sheep_map/sheep.html](http://localhost:8080/html/sheep_map/sheep.html) 访问默认的3d地图。
+启动网页服务器，在本项目目录下分别执行以下命令启动网页服务器：
+```
+cd html/map_data
+live-server
+```
 
-> 默认使用8080端口，如果8080端口被占用，终端会显示新的端口。
+执行后会浏览器会自动打开3d地图网页。算出解后刷新网页，就可以看到最新的游戏3d地图了。
+
 ---
 
 ### 二、克隆本项目
@@ -45,7 +52,7 @@ http-server
 使用以下命令将本项目克隆到本地，并进入项目目录：
 ```
 git clone https://github.com/longhuan1999/sheep.git
-cd sheep/
+cd sheep
 ```
 
 > MacOS系统使用终端执行，Windows系统使用Powershell。
@@ -103,7 +110,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 目测不支持抖音小游戏版抓包，微信小游戏版支持。
 
-主页面的`再次挑战`会重新打乱地图，但`关卡原始地图数据`不会刷新；游戏失败后的`重新挑战`不会重新打乱地图。
+主页面的`再次挑战`会重新打乱地图，但`关卡原始地图数据`不会刷新。
 
 你可以在命令行的输出中看出地图是否刷新，3d地图的网页地址也会在命令行输出：
 
@@ -153,7 +160,7 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
         "4",
         "5"
     ],
-    "oprations": [      //自动求解步骤
+    "operations": [      //自动求解步骤
         "21-12-28",     //方块id
         "20-44-20",
         "13-44-12",
@@ -169,4 +176,4 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 地图原点在左上角，方块的大小是`8 * 8`，有了这些数据就可以尝试写算法求解了。
 
-如果得到了求解步骤，可以将求解步骤保存到oprations字段，内容为依次点击的方块id，网页可以自动显示求解步骤。
+如果得到了求解步骤，可以将求解步骤保存到operations字段，内容为依次点击的方块id，网页可以自动显示求解步骤。
