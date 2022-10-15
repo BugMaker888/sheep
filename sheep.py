@@ -30,11 +30,11 @@ class Sheep():
             if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path:
                 # 游戏第一关
                 return
-            if "a92ee0f5f116b13b7b594e67a53defad" in flow.request.path:
-                # 今日话题第一关
-                return
             # 解析原始地图数据
             response = json.loads(flow.response.content)
+            # 判断是否是第二关
+            if response["levelKey"] < 90000:
+                return
             # 判断是否是话题挑战
             is_topic = False
             if response["levelKey"] == 100000 + date.today().day:
