@@ -80,7 +80,7 @@ def auto_solve(map_data, issort, percent, timeout, threadName):
 
 def post_map_data(map_data):
     # 提交关卡地图数据
-    r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data, indent=4), headers={'Content-Type': 'application/json'})
+    r = requests.post("https://ylgy.endless084.top", data=json.dumps(map_data, indent=4), headers={'Content-Type': 'application/json'}, verify=False)
     r_str = r.text
     url = r_str[r_str.rindex("sheep_map"):r_str.rindex("'")]
     if "id" not in url:
