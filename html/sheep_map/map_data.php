@@ -18,7 +18,7 @@
             $id = $_GET["id"];//存在
         }
     }
-    if($id == null){
+    if(isset($id) == false){
         $ret1 = $db->query("SELECT MAX(ID),MAP_INFO from MAPS");
         while($row = $ret1->fetchArray()){
             $map_info = $row["MAP_INFO"];
@@ -31,7 +31,7 @@
             $map_info = $row["MAP_INFO"];
             echo "const map_data = $map_info;\n";  
         }
-        if($map_info == null){
+        if(isset($map_info) == false){
             echo "window.alert('没有查询到 id=$id 的关卡地图数据！关卡地图数据可能已过期或者id不正确!')\n";
         }
     }
@@ -191,14 +191,14 @@ function init() {
     // 方块图案
     const textureLoader = new THREE.TextureLoader();
     material_side = new THREE.MeshLambertMaterial({
-        map: textureLoader.load('sheep_images/side.png'),
+        map: textureLoader.load('images/side.png'),
     })
     for (let i = 0; i <= 16; i++) {
         material_blocks.push(new THREE.MeshLambertMaterial({
-            map: textureLoader.load(`sheep_images/${i}.png`),
+            map: textureLoader.load(`images/${i}.png`),
         }));
         mask_material_blocks.push(new THREE.MeshLambertMaterial({
-            map: textureLoader.load(`sheep_images/mask/${i}.png`),
+            map: textureLoader.load(`images/mask/${i}.png`),
         }));
     }
 
