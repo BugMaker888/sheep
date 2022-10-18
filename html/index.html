@@ -104,6 +104,7 @@
 
                 //camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 2000 );
                 camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 2000 );
+                camera.zoom = 7;
                 camera.setViewOffset( window.innerWidth, window.innerHeight, 0, -200, window.innerWidth, window.innerHeight );
                 camera.position.set( 0, 0, 0 );
 
