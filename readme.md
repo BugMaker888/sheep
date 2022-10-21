@@ -39,7 +39,7 @@ npm install -g live-server
 
 启动网页服务器，在本项目目录下分别执行以下命令启动网页服务器：
 ```
-cd html/map_data
+cd html/sheep_map (Windows: cd html\sheep_map)
 live-server
 ```
 
