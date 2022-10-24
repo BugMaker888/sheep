@@ -39,7 +39,8 @@ npm install -g live-server
 
 启动网页服务器，在本项目目录下分别执行以下命令启动网页服务器：
 ```
-cd html/map_data
+cd html/sheep_map 
+# Windows: cd html\sheep_map
 live-server
 ```
 
@@ -120,9 +121,11 @@ mitmweb -p 9998 -s sheep.py --web-port 9999 --web-host 0.0.0.0
 
 ### 四、游戏数据
 
+目录`关卡地图数据库文件`中是一些保存了真实游戏关卡数据的数据库文件，可以用数据库管理软件打开查看。
+
 文件`html/sheep_map/map_data.js`里面保存着最近一次游戏的关卡数据。
 
-文件`html/sheep_maps.db`里面是最近50次游戏的关卡数据。
+文件`html/sheep_maps.db`里面是php版生成的最近100次游戏的关卡数据。
 
 大致说明一下字段的含义：
 

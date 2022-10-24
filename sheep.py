@@ -2,14 +2,17 @@ from os.path import isfile
 from mitmproxy import ctx
 from autoSolve import auto_solve
 from subprocess import Popen, PIPE, STDOUT
-from datetime import date
 import execjs
 import json
 import _thread
+import sys
 
 
 def cmd(command):
-    subp = Popen(args=command, shell=True, encoding='utf8', stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    encode = "utf8"
+    if sys.platform == "win32":
+        encode = "gbk"
+    subp = Popen(args=command, shell=True, encoding=encode, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
     subp.wait()
     if subp.poll() == 0:
         output = ""
@@ -53,19 +56,13 @@ class Sheep():
             self.seed = response["data"]["map_seed"]
             self.make_map_data(True)
         elif "maps" in flow.request.path:
-           # 获取地图数据的接口，不解析第一关
-            if "046ef1bab26e5b9bfe2473ded237b572" in flow.request.path:
-                # 游戏第一关
-                return
             # 解析原始地图数据
             response = json.loads(flow.response.content)
-            # 判断是否是第二关
+            # 不解析第一关
             if response["levelKey"] < 90000:
                 return
             # 判断是否是话题挑战
-            is_topic = False
-            if response["levelKey"] == 100000 + date.today().day:
-                is_topic = True
+            is_topic = (response["levelKey"] >= 100000)
             # 保存原始地图数据
             map_data_path = self.get_map_data_path(is_topic)
             with open(map_data_path, "w") as f:
@@ -156,32 +153,38 @@ class Sheep():
         percent = configs["percent"]
         timeout = configs["timeout"]
 
+        python_cmd = "python3"
+        subp = Popen(args="%s -V"%python_cmd, shell=True, encoding='utf8', stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        subp.wait()
+        if "Python" not in subp.communicate()[0]:
+            python_cmd = "python"
+
         if issort != "true" and issort != "reverse" and percent == 0.85:
             threadName = "普通模式"
-            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
-            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
-            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+            command1 = "%s autoSolve.py -s reverse -t %d"%(python_cmd, timeout)
+            command2 = "%s autoSolve.py -p 0 -t %d"%(python_cmd, timeout)
+            command3 = "%s autoSolve.py -s reverse -p 0 -t %d"%(python_cmd, timeout)
         elif issort == "reverse" and percent == 0.85:
             threadName = "高层优先模式"
-            command1 = "python3 autoSolve.py -t %d"%timeout
-            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
-            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+            command1 = "%s autoSolve.py -t %d"%(python_cmd, timeout)
+            command2 = "%s autoSolve.py -p 0 -t %d"%(python_cmd, timeout)
+            command3 = "%s autoSolve.py -s reverse -p 0 -t %d"%(python_cmd, timeout)
         elif issort != "true" and issort != "reverse" and percent == 0:
             threadName = "优先移除两张相同类型的手牌模式"
-            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
-            command2 = "python3 autoSolve.py -t %d"%timeout
-            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
+            command1 = "%s autoSolve.py -s reverse -t %d"%(python_cmd, timeout)
+            command2 = "%s autoSolve.py -t %d"%(python_cmd, timeout)
+            command3 = "%s autoSolve.py -s reverse -p 0 -t %d"%(python_cmd, timeout)
         elif issort == "reverse" and percent == 0:
             threadName = "高层优先且优先移除两张相同类型的手牌模式"
-            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
-            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
-            command3 = "python3 autoSolve.py -t %d"%timeout
+            command1 = "%s autoSolve.py -s reverse -t %d"%(python_cmd, timeout)
+            command2 = "%s autoSolve.py -p 0 -t %d"%(python_cmd, timeout)
+            command3 = "%s autoSolve.py -t %d"%(python_cmd, timeout)
         else:
             threadName = "自定义模式"
-            command1 = "python3 autoSolve.py -s reverse -t %d"%timeout
-            command2 = "python3 autoSolve.py -p 0 -t %d"%timeout
-            command3 = "python3 autoSolve.py -s reverse -p 0 -t %d"%timeout
-            command4 = "python3 autoSolve.py -p 0 -t %d"%timeout
+            command1 = "%s autoSolve.py -s reverse -t %d"%(python_cmd, timeout)
+            command2 = "%s autoSolve.py -p 0 -t %d"%(python_cmd, timeout)
+            command3 = "%s autoSolve.py -s reverse -p 0 -t %d"%(python_cmd, timeout)
+            command4 = "%s autoSolve.py -p 0 -t %d"%(python_cmd, timeout)
         
         try:
             #print("\n建议同时在新的命令行终端分别同时运行以下命令：\npython3 autoSolve.py -s reverse\npython3 autoSolve.py -p 0\npython3 autoSolve.py -s reverse -p 0\n")
