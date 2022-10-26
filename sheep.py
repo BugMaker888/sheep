@@ -153,8 +153,11 @@ class Sheep():
         percent = configs["percent"]
         timeout = configs["timeout"]
 
+        encode = "utf8"
+        if sys.platform == "win32":
+            encode = "gbk"
         python_cmd = "python3"
-        subp = Popen(args="%s -V"%python_cmd, shell=True, encoding='utf8', stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+        subp = Popen(args="%s -V"%python_cmd, shell=True, encoding=encode, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
         subp.wait()
         if "Python" not in subp.communicate()[0]:
             python_cmd = "python"
