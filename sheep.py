@@ -1,4 +1,5 @@
 from mitmproxy import ctx
+import datetime
 import execjs
 import json
 import os
@@ -58,6 +59,12 @@ class Sheep():
 
         # 读取原始地图数据
         map_data = json.loads(open(map_data_path).read())
+
+        # 判断是否使用了旧地图数据
+        # !!!: 当前只判断了day，在不同月份使用相同day的地图文件不会出现提示
+        day = int(map_data["levelKey"]) % 100
+        if day != datetime.datetime.today().day:
+            ctx.log.error(f"当前使用的地图数据文件为{day}号地图，请删除游戏缓存后重新进入游戏！")
 
         # 根据"blockTypeData"字段按顺序生成所有类型的方块，存放到数组
         block_type_data = map_data["blockTypeData"]
