@@ -104,9 +104,9 @@
 
                 //camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 2000 );
                 camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 2000 );
-                camera.zoom = 7;
-                camera.setViewOffset( window.innerWidth, window.innerHeight, 0, -200, window.innerWidth, window.innerHeight );
-                camera.position.set( 0, 0, 0 );
+                camera.zoom = 6;
+                camera.setViewOffset( window.innerWidth, window.innerHeight, 0, -150, window.innerWidth, window.innerHeight );
+                camera.position.set( 0, 300, 0 );
 
                 // controls
 
@@ -241,7 +241,7 @@
                     const block_object = new THREE.Mesh(geometry, null);
                     block_object.position.x = 8 * i - 24;
                     block_object.position.y = 0;
-                    block_object.position.z = -64;
+                    block_object.position.z = -56;
                     block_object.updateMatrix();
                     block_object.matrixAutoUpdate = false;
                     scene.add(block_object);
