@@ -19,13 +19,18 @@ Windows系统需要手动安装`git`，官网：[https://gitforwindows.org](http
 
 ### 二、克隆本项目
 
-使用以下命令将本项目克隆到本地，并进入项目目录：
+使用以下命令将本项目克隆到本地：
 ```
 git clone https://github.com/BugMaker888/sheep.git
-cd sheep
 ```
 
-> MacOS系统使用终端执行，Windows系统使用Powershell。
+进入本项目根目录，安装依赖库：
+```
+cd sheep
+pip install -r requirements.txt
+```
+
+> MacOS系统使用终端执行，Windows系统使用Anaconda自带的Powershell。
 
 ---
 
@@ -60,11 +65,6 @@ live-server
 pip install mitmproxy
 ```
 
-由于插件使用到了`pyExecJs`库，所以还需要执行：
-```
-pip install pyExecJs
-```
-
 #### 2、启动
 
 新开一个终端，切换到本项目目录，执行以下命令启动抓包工具并加载`sheep.py`插件：
@@ -88,11 +88,11 @@ mitmweb -p 6666 -s sheep.py
 
 也可以使用Windows版微信的小程序。
 
+小程序抓包教程可以观看b站视频：[【小程序抓包教程-哔哩哔哩】](https://www.bilibili.com/video/BV1Ne41157ML/)。
+
 #### 4、使用
 
-因为关卡数据每天只会请求一次，所以可以先删除游戏再重新进入。
-
-手机进入游戏后，电脑刷新网页，就可以看到最新的游戏3d地图了。
+进入游戏后，电脑会自动刷新网页，可以看到最新的游戏3d地图。
 
 ---
 
@@ -136,7 +136,7 @@ mitmweb -p 6666 -s sheep.py
         "4",
         "5"
     ],
-    "operations": [      //自动求解步骤
+    "operations": [     //自动求解步骤
         "21-12-28",     //方块id
         "20-44-20",
         "13-44-12",
