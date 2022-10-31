@@ -1,70 +1,80 @@
 from mitmproxy import ctx
+import requests
 import datetime
 import execjs
 import json
 import os
+import warnings
+warnings.filterwarnings('ignore')
 
 
 class Sheep():
 
     def __init__(self):
-        self.seed = [0, 0, 0, 0]
         self.js_code = open("shuffle.js", encoding="utf-8").read()
-        self.map_data_path = "./map_data.txt"
-        self.map_data_topic_path = "./map_data_topic.txt"
+        self.daily_map_data_dir = "./map_data/daily"
+        self.topic_map_data_dir = "./map_data/topic"
+        self.make_dir(self.daily_map_data_dir)
+        self.make_dir(self.topic_map_data_dir)
 
     def response(self, flow):
         """ 接口响应方法 """
-        if "map_info_ex" in flow.request.path:
-            # 获取随机种子的接口，随机种子存储到self.seed中
+        if "game/map_info_ex" in flow.request.path:
+            # 每日一关获取随机种子的接口
             response = json.loads(flow.response.content)
-            self.seed = response["data"]["map_seed"]
-            self.make_map_data(False)
+            self.make_map_data(response["data"], is_topic=False)
         elif "topic/game_start" in flow.request.path:
             # 今日话题获取随机种子的接口
             response = json.loads(flow.response.content)
-            self.seed = response["data"]["map_seed"]
-            self.make_map_data(True)
-        elif "/maps/" in flow.request.path:
-            # 解析原始地图数据
-            response = json.loads(flow.response.content)
-            # 不解析第一关
-            if response["levelKey"] < 90000:
-                return
-            # 判断是否是话题挑战
-            is_topic = (response["levelKey"] >= 100000)
-            # 保存原始地图数据
-            map_data_path = self.get_map_data_path(is_topic)
-            with open(map_data_path, "w") as f:
-                f.write(json.dumps(response, indent=4))
-                f.close()
-            self.make_map_data(is_topic)
+            self.make_map_data(response["data"], is_topic=True)
 
-    def get_map_data_path(self, is_topic):
-        """ 获取文件路径 """
+    def make_dir(self, path):
+        """ 创建目录 """
+        if not os.path.exists(path):
+            os.makedirs(path)
+
+    def get_map_data_dir(self, is_topic):
+        """ 获取地图文件缓存目录 """
         if is_topic:
-            return self.map_data_topic_path
+            return self.topic_map_data_dir
         else:
-            return self.map_data_path
+            return self.daily_map_data_dir
 
-    def make_map_data(self, is_topic):
+    def get_map_data(self, map_info, is_topic):
+        """ 获取游戏地图原始数据 """
+        map_data_dir = self.get_map_data_dir(is_topic)
+        level2_map_md5 = map_info["map_md5"][1]
+        map_data_path = f"{map_data_dir}/{level2_map_md5}.txt"
+        print("地图数据文件路径:", map_data_path)
+
+        # 从本地文件读取原始地图数据
+        if os.path.isfile(map_data_path):
+            map_data = json.loads(open(map_data_path).read())
+            return map_data
+
+        # 从服务器请求地图数据
+        try:
+            print("从服务器请求地图数据")
+            map_data_url = f"https://cat-match-static.easygame2021.com/maps/{level2_map_md5}.txt"
+            response = requests.get(map_data_url, verify=False, timeout=10)
+            map_data = response.json()
+            with open(map_data_path, "w") as f:
+                f.write(json.dumps(map_data, indent=4))
+                f.close()
+            return map_data
+        except Exception as e:
+            print(e)
+
+    def make_map_data(self, map_info, is_topic):
         """ 制作地图数据 """
 
         print("==========================================")
 
-        # 判断原始地图文件是否存在
-        map_data_path = self.get_map_data_path(is_topic)
-        if not os.path.isfile(map_data_path):
+        # 获取原始地图数据
+        map_data = self.get_map_data(map_info, is_topic)
+        if not map_data:
+            print("获取不到地图数据")
             return
-
-        # 读取原始地图数据
-        map_data = json.loads(open(map_data_path).read())
-
-        # 判断是否使用了旧地图数据
-        # !!!: 当前只判断了day，在不同月份使用相同day的地图文件不会出现提示
-        day = int(map_data["levelKey"]) % 100
-        if day != datetime.datetime.today().day:
-            ctx.log.error(f"当前使用的地图数据文件为{day}号地图，请删除游戏缓存后重新进入游戏！")
 
         # 根据"blockTypeData"字段按顺序生成所有类型的方块，存放到数组
         block_type_data = map_data["blockTypeData"]
@@ -76,8 +86,9 @@ class Sheep():
                 block_types.extend([i] * count)
 
         # 调用js方法将数组打乱，打乱后的结果和游戏的一样
+        map_seed = map_info["map_seed"]
         block_types = execjs.compile(self.js_code).call(
-            "shuffle", block_types, self.seed)
+            "shuffle", block_types, map_seed)
         print(block_types)
 
         # 将游戏的层数排序
@@ -99,8 +110,7 @@ class Sheep():
 
         # 保存地图数据
         data_string = f"const map_data = {json.dumps(map_data, indent=4)};"
-        save_path = "./html/map_data.js"
-        with open(save_path, "w") as f:
+        with open("./html/map_data.js", "w") as f:
             f.write(data_string)
             f.close()
 
