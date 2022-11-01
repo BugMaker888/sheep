@@ -56,7 +56,9 @@ class Sheep():
         try:
             print("从服务器请求地图数据")
             map_data_url = f"https://cat-match-static.easygame2021.com/maps/{level2_map_md5}.txt"
-            response = requests.get(map_data_url, verify=False, timeout=10)
+            sesstion = requests.Session()
+            sesstion.trust_env = False
+            response = sesstion.get(map_data_url, verify=False, timeout=10)
             map_data = response.json()
             with open(map_data_path, "w") as f:
                 f.write(json.dumps(map_data, indent=4))
