@@ -12,39 +12,26 @@ class Sheep():
 
     def __init__(self):
         self.js_code = open("shuffle.js", encoding="utf-8").read()
-        self.daily_map_data_dir = "./map_data/daily"
-        self.topic_map_data_dir = "./map_data/topic"
-        self.make_dir(self.daily_map_data_dir)
-        self.make_dir(self.topic_map_data_dir)
+        self.map_data_dir = "./map_data"
+        self.make_dir(self.map_data_dir)
 
     def response(self, flow):
         """ 接口响应方法 """
-        if "game/map_info_ex" in flow.request.path:
-            # 每日一关获取随机种子的接口
+        if "game/map_info_ex" in flow.request.path or \
+           "topic/game_start" in flow.request.path:
+            # 获取地图信息
             response = json.loads(flow.response.content)
-            self.make_map_data(response["data"], is_topic=False)
-        elif "topic/game_start" in flow.request.path:
-            # 今日话题获取随机种子的接口
-            response = json.loads(flow.response.content)
-            self.make_map_data(response["data"], is_topic=True)
+            self.make_map_data(response["data"])
 
     def make_dir(self, path):
         """ 创建目录 """
         if not os.path.exists(path):
             os.makedirs(path)
 
-    def get_map_data_dir(self, is_topic):
-        """ 获取地图文件缓存目录 """
-        if is_topic:
-            return self.topic_map_data_dir
-        else:
-            return self.daily_map_data_dir
-
-    def get_map_data(self, map_info, is_topic):
+    def get_map_data(self, map_info):
         """ 获取游戏地图原始数据 """
-        map_data_dir = self.get_map_data_dir(is_topic)
         level2_map_md5 = map_info["map_md5"][1]
-        map_data_path = f"{map_data_dir}/{level2_map_md5}.txt"
+        map_data_path = f"{self.map_data_dir}/{level2_map_md5}.txt"
         print("地图数据文件路径:", map_data_path)
 
         # 从本地文件读取原始地图数据
@@ -67,13 +54,13 @@ class Sheep():
         except Exception as e:
             print(e)
 
-    def make_map_data(self, map_info, is_topic):
+    def make_map_data(self, map_info):
         """ 制作地图数据 """
 
         print("==========================================")
 
         # 获取原始地图数据
-        map_data = self.get_map_data(map_info, is_topic)
+        map_data = self.get_map_data(map_info)
         if not map_data:
             print("获取不到地图数据")
             return
