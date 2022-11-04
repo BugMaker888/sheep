@@ -154,3 +154,9 @@ mitmweb -p 6666 -s sheep.py
 地图原点在左上角，方块的大小是`8 * 8`，有了这些数据就可以尝试写算法求解了。
 
 如果得到了求解步骤，可以将求解步骤保存到`operations`字段，内容为依次点击的方块id，网页可以自动显示求解步骤。
+
+---
+
+### License
+
+This project is licensed under [GLWTPL](./LICENSE) .
