@@ -1,0 +1,3317 @@
+{
+    "widthNum": 8,
+    "heightNum": 10,
+    "levelKey": 90030,
+    "blockTypeData": {
+        "1": 8,
+        "2": 8,
+        "3": 8,
+        "4": 7,
+        "5": 7,
+        "6": 7,
+        "7": 7,
+        "8": 8,
+        "9": 8,
+        "10": 8,
+        "11": 8,
+        "12": 8,
+        "13": 8,
+        "14": 7
+    },
+    "levelData": {
+        "1": [
+            {
+                "id": "1-20-24",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-36-24",
+                "type": 14,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-20-36",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-20-44",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-20-52",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-20-12",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-36-36",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-36-44",
+                "type": 5,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-36-52",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-36-12",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-16-4",
+                "type": 10,
+                "rolNum": 16,
+                "rowNum": 4,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-8-4",
+                "type": 5,
+                "rolNum": 8,
+                "rowNum": 4,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-4-12",
+                "type": 3,
+                "rolNum": 4,
+                "rowNum": 12,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-4-20",
+                "type": 4,
+                "rolNum": 4,
+                "rowNum": 20,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-4-28",
+                "type": 14,
+                "rolNum": 4,
+                "rowNum": 28,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-8-36",
+                "type": 12,
+                "rolNum": 8,
+                "rowNum": 36,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-12-44",
+                "type": 8,
+                "rolNum": 12,
+                "rowNum": 44,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-40-4",
+                "type": 12,
+                "rolNum": 40,
+                "rowNum": 4,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-48-4",
+                "type": 3,
+                "rolNum": 48,
+                "rowNum": 4,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-52-12",
+                "type": 14,
+                "rolNum": 52,
+                "rowNum": 12,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-52-20",
+                "type": 10,
+                "rolNum": 52,
+                "rowNum": 20,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-52-28",
+                "type": 1,
+                "rolNum": 52,
+                "rowNum": 28,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-48-36",
+                "type": 11,
+                "rolNum": 48,
+                "rowNum": 36,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-44-44",
+                "type": 7,
+                "rolNum": 44,
+                "rowNum": 44,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "1-4-48",
+                "type": 5,
+                "rolNum": 4,
+                "rowNum": 48,
+                "layerNum": 1,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "1-52-48",
+                "type": 4,
+                "rolNum": 52,
+                "rowNum": 48,
+                "layerNum": 1,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "1-28-64",
+                "type": 10,
+                "rolNum": 28,
+                "rowNum": 64,
+                "layerNum": 1,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "2": [
+            {
+                "id": "2-20-20",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-20-28",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-36-20",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-36-28",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-24-8",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-32-8",
+                "type": 3,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-24-40",
+                "type": 4,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-32-40",
+                "type": 8,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-24-56",
+                "type": 9,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-32-56",
+                "type": 4,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-4-49",
+                "type": 5,
+                "rolNum": 4,
+                "rowNum": 49,
+                "layerNum": 2,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "2-52-49",
+                "type": 5,
+                "rolNum": 52,
+                "rowNum": 49,
+                "layerNum": 2,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "2-12-4",
+                "type": 1,
+                "rolNum": 12,
+                "rowNum": 4,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-4-16",
+                "type": 14,
+                "rolNum": 4,
+                "rowNum": 16,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-4-24",
+                "type": 7,
+                "rolNum": 4,
+                "rowNum": 24,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-44-4",
+                "type": 13,
+                "rolNum": 44,
+                "rowNum": 4,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-52-16",
+                "type": 13,
+                "rolNum": 52,
+                "rowNum": 16,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-52-24",
+                "type": 6,
+                "rolNum": 52,
+                "rowNum": 24,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-12-40",
+                "type": 1,
+                "rolNum": 12,
+                "rowNum": 40,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "2-44-40",
+                "type": 10,
+                "rolNum": 44,
+                "rowNum": 40,
+                "layerNum": 2,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "3": [
+            {
+                "id": "3-20-24",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-36-24",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-20-12",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-20-36",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-20-44",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-20-52",
+                "type": 4,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-36-12",
+                "type": 14,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-36-36",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-36-44",
+                "type": 5,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-36-52",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 3,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "3-4-50",
+                "type": 11,
+                "rolNum": 4,
+                "rowNum": 50,
+                "layerNum": 3,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "3-52-50",
+                "type": 13,
+                "rolNum": 52,
+                "rowNum": 50,
+                "layerNum": 3,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "4": [
+            {
+                "id": "4-20-20",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-20-28",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-36-20",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-36-28",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-24-56",
+                "type": 12,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-32-56",
+                "type": 3,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-24-40",
+                "type": 13,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-32-40",
+                "type": 3,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-24-8",
+                "type": 1,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-32-8",
+                "type": 9,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 4,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "4-4-51",
+                "type": 6,
+                "rolNum": 4,
+                "rowNum": 51,
+                "layerNum": 4,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "4-52-51",
+                "type": 9,
+                "rolNum": 52,
+                "rowNum": 51,
+                "layerNum": 4,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "5": [
+            {
+                "id": "5-20-24",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-36-24",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-20-12",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-36-12",
+                "type": 1,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-20-36",
+                "type": 10,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-20-44",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-20-52",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-36-36",
+                "type": 3,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-36-44",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-36-52",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 5,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "5-4-52",
+                "type": 4,
+                "rolNum": 4,
+                "rowNum": 52,
+                "layerNum": 5,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "5-52-52",
+                "type": 8,
+                "rolNum": 52,
+                "rowNum": 52,
+                "layerNum": 5,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "6": [
+            {
+                "id": "6-20-20",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-20-28",
+                "type": 6,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-36-20",
+                "type": 14,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-36-28",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-24-56",
+                "type": 10,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-32-56",
+                "type": 7,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-24-40",
+                "type": 1,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-32-40",
+                "type": 9,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-24-8",
+                "type": 11,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-32-8",
+                "type": 11,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 6,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "6-4-53",
+                "type": 1,
+                "rolNum": 4,
+                "rowNum": 53,
+                "layerNum": 6,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "6-52-53",
+                "type": 2,
+                "rolNum": 52,
+                "rowNum": 53,
+                "layerNum": 6,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "7": [
+            {
+                "id": "7-20-24",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-36-24",
+                "type": 6,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-20-12",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-20-36",
+                "type": 7,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-20-44",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-20-52",
+                "type": 7,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-36-12",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-36-36",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-36-44",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-36-52",
+                "type": 5,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 7,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "7-4-54",
+                "type": 8,
+                "rolNum": 4,
+                "rowNum": 54,
+                "layerNum": 7,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "7-52-54",
+                "type": 12,
+                "rolNum": 52,
+                "rowNum": 54,
+                "layerNum": 7,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "8": [
+            {
+                "id": "8-20-20",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-20-28",
+                "type": 10,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-36-20",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-36-28",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-24-8",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-32-8",
+                "type": 14,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-24-40",
+                "type": 3,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-32-40",
+                "type": 6,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-24-56",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-32-56",
+                "type": 8,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 8,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "8-4-55",
+                "type": 2,
+                "rolNum": 4,
+                "rowNum": 55,
+                "layerNum": 8,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "8-52-55",
+                "type": 2,
+                "rolNum": 52,
+                "rowNum": 55,
+                "layerNum": 8,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "9": [
+            {
+                "id": "9-20-24",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-36-24",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-20-12",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-20-36",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-20-44",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-20-52",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-36-12",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-36-36",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-36-44",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-36-52",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 9,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "9-4-56",
+                "type": 9,
+                "rolNum": 4,
+                "rowNum": 56,
+                "layerNum": 9,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "9-52-56",
+                "type": 12,
+                "rolNum": 52,
+                "rowNum": 56,
+                "layerNum": 9,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "10": [
+            {
+                "id": "10-20-20",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-20-28",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-36-20",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-36-28",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-24-56",
+                "type": 5,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-32-56",
+                "type": 9,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-24-40",
+                "type": 6,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-32-40",
+                "type": 10,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-24-8",
+                "type": 13,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-32-8",
+                "type": 14,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 10,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "10-4-57",
+                "type": 6,
+                "rolNum": 4,
+                "rowNum": 57,
+                "layerNum": 10,
+                "moldType": 2,
+                "blockNode": null
+            },
+            {
+                "id": "10-52-57",
+                "type": 2,
+                "rolNum": 52,
+                "rowNum": 57,
+                "layerNum": 10,
+                "moldType": 2,
+                "blockNode": null
+            }
+        ],
+        "11": [
+            {
+                "id": "11-20-24",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-36-24",
+                "type": 6,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-20-12",
+                "type": 7,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-20-36",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-20-44",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-20-52",
+                "type": 13,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-36-12",
+                "type": 3,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-36-36",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-36-44",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "11-36-52",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 11,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "12": [
+            {
+                "id": "12-20-20",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-20-28",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-36-20",
+                "type": 8,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-36-28",
+                "type": 1,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-24-8",
+                "type": 11,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-32-8",
+                "type": 11,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-24-40",
+                "type": 14,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-32-40",
+                "type": 9,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-24-56",
+                "type": 7,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "12-32-56",
+                "type": 6,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 12,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "13": [
+            {
+                "id": "13-20-24",
+                "type": 11,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-36-24",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-20-12",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-36-12",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-20-36",
+                "type": 13,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-20-44",
+                "type": 13,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-20-52",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-36-36",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-36-44",
+                "type": 14,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "13-36-52",
+                "type": 3,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 13,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "14": [
+            {
+                "id": "14-20-20",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-20-28",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-36-20",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-36-28",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-24-56",
+                "type": 10,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-32-56",
+                "type": 14,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-24-40",
+                "type": 9,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-32-40",
+                "type": 13,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-24-8",
+                "type": 4,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "14-32-8",
+                "type": 6,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 14,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "15": [
+            {
+                "id": "15-20-24",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-36-24",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-20-12",
+                "type": 7,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-20-36",
+                "type": 6,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-20-44",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-20-52",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-36-12",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-36-36",
+                "type": 1,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-36-44",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "15-36-52",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 15,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "16": [
+            {
+                "id": "16-20-20",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-20-28",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-36-20",
+                "type": 1,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-36-28",
+                "type": 1,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-24-56",
+                "type": 4,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-32-56",
+                "type": 11,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-24-40",
+                "type": 12,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-32-40",
+                "type": 13,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-24-8",
+                "type": 10,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "16-32-8",
+                "type": 7,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 16,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "17": [
+            {
+                "id": "17-20-24",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-36-24",
+                "type": 5,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-20-12",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-20-36",
+                "type": 13,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-20-44",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-20-52",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-36-12",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-36-36",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-36-44",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "17-36-52",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 17,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "18": [
+            {
+                "id": "18-20-20",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-20-28",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-36-20",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-36-28",
+                "type": 6,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-24-56",
+                "type": 4,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-32-56",
+                "type": 6,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-24-40",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-32-40",
+                "type": 4,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-24-8",
+                "type": 3,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "18-32-8",
+                "type": 8,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 18,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "19": [
+            {
+                "id": "19-20-24",
+                "type": 6,
+                "rolNum": 20,
+                "rowNum": 24,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-36-24",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 24,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-20-12",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-20-36",
+                "type": 13,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-20-44",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-20-52",
+                "type": 4,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-36-12",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-36-36",
+                "type": 3,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-36-44",
+                "type": 2,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "19-36-52",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 19,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "20": [
+            {
+                "id": "20-20-20",
+                "type": 6,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-20-28",
+                "type": 10,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-36-20",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-36-28",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-24-56",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-32-56",
+                "type": 5,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-24-40",
+                "type": 4,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-32-40",
+                "type": 13,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-24-8",
+                "type": 12,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "20-32-8",
+                "type": 14,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 20,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "21": [
+            {
+                "id": "21-24-24",
+                "type": 6,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-32-24",
+                "type": 8,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-20-12",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 12,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-20-36",
+                "type": 3,
+                "rolNum": 20,
+                "rowNum": 36,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-20-44",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 44,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-20-52",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 52,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-36-12",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 12,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-36-36",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 36,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-36-44",
+                "type": 13,
+                "rolNum": 36,
+                "rowNum": 44,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "21-36-52",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 52,
+                "layerNum": 21,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "22": [
+            {
+                "id": "22-20-20",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-20-28",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-36-20",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-36-28",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-24-56",
+                "type": 7,
+                "rolNum": 24,
+                "rowNum": 56,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-32-56",
+                "type": 1,
+                "rolNum": 32,
+                "rowNum": 56,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-24-40",
+                "type": 3,
+                "rolNum": 24,
+                "rowNum": 40,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-32-40",
+                "type": 2,
+                "rolNum": 32,
+                "rowNum": 40,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-24-8",
+                "type": 5,
+                "rolNum": 24,
+                "rowNum": 8,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-32-8",
+                "type": 1,
+                "rolNum": 32,
+                "rowNum": 8,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-16-52",
+                "type": 6,
+                "rolNum": 16,
+                "rowNum": 52,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "22-40-52",
+                "type": 8,
+                "rolNum": 40,
+                "rowNum": 52,
+                "layerNum": 22,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "23": [
+            {
+                "id": "23-24-24",
+                "type": 1,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 23,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "23-32-24",
+                "type": 14,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 23,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "24": [
+            {
+                "id": "24-20-20",
+                "type": 1,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 24,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "24-20-28",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 24,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "24-36-20",
+                "type": 6,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 24,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "24-36-28",
+                "type": 3,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 24,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "25": [
+            {
+                "id": "25-24-24",
+                "type": 6,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 25,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "25-32-24",
+                "type": 9,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 25,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "26": [
+            {
+                "id": "26-20-20",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 26,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "26-20-28",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 26,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "26-36-20",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 26,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "26-36-28",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 26,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "27": [
+            {
+                "id": "27-24-24",
+                "type": 13,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 27,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "27-32-24",
+                "type": 8,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 27,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "28": [
+            {
+                "id": "28-20-20",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 28,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "28-20-28",
+                "type": 12,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 28,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "28-36-20",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 28,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "28-36-28",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 28,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "29": [
+            {
+                "id": "29-24-24",
+                "type": 2,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 29,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "29-32-24",
+                "type": 7,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 29,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "30": [
+            {
+                "id": "30-20-20",
+                "type": 2,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 30,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "30-20-28",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 30,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "30-36-20",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 30,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "30-36-28",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 30,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "31": [
+            {
+                "id": "31-24-24",
+                "type": 1,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 31,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "31-32-24",
+                "type": 1,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 31,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "32": [
+            {
+                "id": "32-20-20",
+                "type": 6,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 32,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "32-36-20",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 32,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "32-20-28",
+                "type": 10,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 32,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "32-36-28",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 32,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "33": [
+            {
+                "id": "33-24-24",
+                "type": 11,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 33,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "33-32-24",
+                "type": 12,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 33,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "34": [
+            {
+                "id": "34-20-20",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 34,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "34-20-28",
+                "type": 4,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 34,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "34-36-20",
+                "type": 12,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 34,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "34-36-28",
+                "type": 11,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 34,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "35": [
+            {
+                "id": "35-24-24",
+                "type": 1,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 35,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "35-32-24",
+                "type": 7,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 35,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "36": [
+            {
+                "id": "36-20-20",
+                "type": 14,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 36,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "36-20-28",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 36,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "36-36-20",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 36,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "36-36-28",
+                "type": 9,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 36,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "37": [
+            {
+                "id": "37-24-24",
+                "type": 7,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 37,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "37-32-24",
+                "type": 4,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 37,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "38": [
+            {
+                "id": "38-20-20",
+                "type": 5,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 38,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "38-20-28",
+                "type": 10,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 38,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "38-36-20",
+                "type": 6,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 38,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "38-36-28",
+                "type": 10,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 38,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "39": [
+            {
+                "id": "39-24-24",
+                "type": 8,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 39,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "39-32-24",
+                "type": 13,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 39,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "40": [
+            {
+                "id": "40-20-20",
+                "type": 8,
+                "rolNum": 20,
+                "rowNum": 20,
+                "layerNum": 40,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "40-20-28",
+                "type": 9,
+                "rolNum": 20,
+                "rowNum": 28,
+                "layerNum": 40,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "40-36-20",
+                "type": 4,
+                "rolNum": 36,
+                "rowNum": 20,
+                "layerNum": 40,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "40-36-28",
+                "type": 7,
+                "rolNum": 36,
+                "rowNum": 28,
+                "layerNum": 40,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ],
+        "41": [
+            {
+                "id": "41-24-24",
+                "type": 7,
+                "rolNum": 24,
+                "rowNum": 24,
+                "layerNum": 41,
+                "moldType": 1,
+                "blockNode": null
+            },
+            {
+                "id": "41-32-24",
+                "type": 5,
+                "rolNum": 32,
+                "rowNum": 24,
+                "layerNum": 41,
+                "moldType": 1,
+                "blockNode": null
+            }
+        ]
+    },
+    "operations": [
+        "41-24-24",
+        "41-32-24",
+        "40-36-28",
+        "40-20-20",
+        "40-20-28",
+        "40-36-20",
+        "22-24-56",
+        "39-24-24",
+        "39-32-24",
+        "22-40-52",
+        "38-20-20",
+        "38-20-28",
+        "22-24-8",
+        "38-36-28",
+        "38-36-20",
+        "2-44-40",
+        "37-32-24",
+        "22-16-52",
+        "10-4-57",
+        "37-24-24",
+        "36-36-28",
+        "9-4-56",
+        "36-20-20",
+        "22-32-56",
+        "21-36-52",
+        "36-36-20",
+        "35-32-24",
+        "2-4-24",
+        "36-20-28",
+        "35-24-24",
+        "22-32-8",
+        "34-36-20",
+        "21-20-52",
+        "21-20-12",
+        "34-36-28",
+        "2-44-4",
+        "2-52-16",
+        "34-20-20",
+        "2-4-16",
+        "1-52-12",
+        "34-20-28",
+        "33-24-24",
+        "1-48-36",
+        "33-32-24",
+        "32-36-20",
+        "20-24-8",
+        "32-36-28",
+        "32-20-28",
+        "21-36-12",
+        "32-20-20",
+        "31-24-24",
+        "1-28-64",
+        "31-32-24",
+        "30-20-20",
+        "19-20-12",
+        "30-20-28",
+        "29-24-24",
+        "28-20-20",
+        "30-36-20",
+        "20-32-8",
+        "1-4-28",
+        "22-32-40",
+        "20-24-56",
+        "10-52-57",
+        "30-36-28",
+        "19-20-52",
+        "18-24-56",
+        "29-32-24",
+        "28-36-28",
+        "1-44-44",
+        "28-20-28",
+        "21-36-36",
+        "9-52-56",
+        "27-24-24",
+        "26-20-20",
+        "26-20-28",
+        "28-36-20",
+        "25-24-24",
+        "24-20-28",
+        "27-32-24",
+        "26-36-20",
+        "26-36-28",
+        "25-32-24",
+        "24-36-20",
+        "24-36-28",
+        "24-20-20",
+        "23-24-24",
+        "2-12-4",
+        "23-32-24",
+        "22-24-40",
+        "21-20-36",
+        "22-36-28",
+        "21-36-44",
+        "20-32-40",
+        "22-20-20",
+        "20-32-56",
+        "1-8-4",
+        "19-36-36",
+        "18-24-8",
+        "1-4-12",
+        "22-36-20",
+        "21-32-24",
+        "17-20-12",
+        "22-20-28",
+        "20-36-28",
+        "19-36-12",
+        "21-24-24",
+        "20-20-20",
+        "2-52-24",
+        "21-20-44",
+        "2-12-40",
+        "1-52-28",
+        "20-20-28",
+        "16-24-8",
+        "1-52-20",
+        "20-24-40",
+        "1-8-36",
+        "1-40-4",
+        "19-36-44",
+        "18-32-40",
+        "1-4-20",
+        "20-36-20",
+        "19-20-36",
+        "17-36-44",
+        "19-20-44",
+        "18-24-40",
+        "17-20-52",
+        "19-36-24",
+        "18-32-8",
+        "1-12-44",
+        "17-36-12",
+        "8-52-55",
+        "8-4-55",
+        "19-36-52",
+        "16-32-8",
+        "15-20-12",
+        "19-20-24",
+        "18-32-56",
+        "18-36-28",
+        "18-20-20",
+        "17-36-36",
+        "7-52-54",
+        "18-20-28",
+        "15-36-12",
+        "1-16-4",
+        "17-36-52",
+        "16-24-56",
+        "14-24-8",
+        "18-36-20",
+        "16-32-56",
+        "15-36-52",
+        "17-20-36",
+        "15-20-52",
+        "14-32-56",
+        "17-20-44",
+        "13-20-12",
+        "12-24-8",
+        "17-36-24",
+        "16-36-20",
+        "16-36-28",
+        "16-32-40",
+        "11-20-12",
+        "10-24-8",
+        "17-20-24",
+        "16-24-40",
+        "15-36-44",
+        "16-20-28",
+        "9-20-12",
+        "8-24-8",
+        "14-24-56",
+        "13-20-52",
+        "7-4-54",
+        "15-36-24",
+        "14-32-8",
+        "13-36-12",
+        "15-20-36",
+        "13-36-52",
+        "12-32-56",
+        "16-20-20",
+        "7-20-12",
+        "1-48-4",
+        "15-20-24",
+        "14-36-20",
+        "11-36-52",
+        "12-24-56",
+        "11-20-52",
+        "10-24-56",
+        "15-36-36",
+        "14-32-40",
+        "13-36-36",
+        "15-20-44",
+        "14-24-40",
+        "13-36-44",
+        "14-20-20",
+        "12-32-40",
+        "10-32-56",
+        "14-36-28",
+        "11-36-36",
+        "9-36-52",
+        "14-20-28",
+        "11-36-44",
+        "8-32-56",
+        "13-20-24",
+        "12-20-20",
+        "12-20-28",
+        "13-20-36",
+        "12-32-8",
+        "6-24-8",
+        "13-20-44",
+        "10-32-40",
+        "9-36-36",
+        "13-36-24",
+        "12-36-28",
+        "6-4-53",
+        "12-36-20",
+        "11-36-24",
+        "10-36-20",
+        "12-24-40",
+        "11-20-36",
+        "10-36-28",
+        "11-20-44",
+        "11-36-12",
+        "11-20-24",
+        "10-20-20",
+        "10-24-40",
+        "7-36-52",
+        "10-32-8",
+        "10-20-28",
+        "9-20-24",
+        "9-36-12",
+        "9-20-36",
+        "8-20-20",
+        "9-36-44",
+        "9-36-24",
+        "8-32-40",
+        "9-20-52",
+        "8-24-56",
+        "6-52-53",
+        "9-20-44",
+        "8-24-40",
+        "7-20-44",
+        "8-36-28",
+        "5-52-52",
+        "4-52-51",
+        "8-36-20",
+        "7-36-24",
+        "6-36-28",
+        "8-32-8",
+        "7-36-12",
+        "3-52-50",
+        "7-20-36",
+        "7-20-52",
+        "7-36-36",
+        "6-24-40",
+        "6-32-8",
+        "5-36-12",
+        "8-20-28",
+        "6-24-56",
+        "5-20-36",
+        "7-20-24",
+        "7-36-44",
+        "5-20-52",
+        "6-20-20",
+        "6-20-28",
+        "5-20-24",
+        "6-36-20",
+        "6-32-40",
+        "4-20-20",
+        "6-32-56",
+        "5-20-12",
+        "4-24-56",
+        "5-36-24",
+        "5-36-44",
+        "4-36-20",
+        "5-4-52",
+        "5-20-44",
+        "4-4-51",
+        "5-36-52",
+        "5-36-36",
+        "3-20-52",
+        "4-32-56",
+        "4-32-40",
+        "4-32-8",
+        "4-36-28",
+        "4-24-40",
+        "3-20-36",
+        "4-20-28",
+        "4-24-8",
+        "3-36-24",
+        "3-36-44",
+        "3-20-44",
+        "2-52-49",
+        "3-36-12",
+        "3-20-24",
+        "2-20-28",
+        "3-36-36",
+        "3-20-12",
+        "2-24-8",
+        "3-4-50",
+        "3-36-52",
+        "2-20-20",
+        "2-24-56",
+        "2-24-40",
+        "1-20-44",
+        "2-32-8",
+        "2-32-56",
+        "1-20-36",
+        "2-36-20",
+        "2-32-40",
+        "1-52-48",
+        "2-36-28",
+        "2-4-49",
+        "1-36-24",
+        "1-20-24",
+        "1-4-48",
+        "1-36-44",
+        "1-36-12",
+        "1-20-12",
+        "1-36-36",
+        "1-36-52",
+        "1-20-52"
+    ]
+}

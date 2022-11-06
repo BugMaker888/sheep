@@ -48,7 +48,6 @@
         <!-- Import maps polyfill -->
         <!-- Remove this when import maps will be widely supported -->
         <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
-        <script async src="./map_data.js"></script>
 
         <script type="importmap">
             {
@@ -69,6 +68,7 @@
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
             const removed_blocks = [];
+            var map_data;
 
             // 显示解答步骤的变量
             var block_objects = {}
@@ -109,21 +109,37 @@
                 camera.position.set( 0, 300, 0 );
 
                 // controls
-
                 controls = new OrbitControls( camera, renderer.domElement );
                 controls.listenToKeyEvents( window ); // optional
-
                 //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
-
                 controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
                 controls.dampingFactor = 0.05;
-
                 controls.screenSpacePanning = false;
-
                 controls.minDistance = 100;
                 controls.maxDistance = 500;
-
                 controls.maxPolarAngle = Math.PI / 2;
+
+                // 加载地图数据
+                var url = "./map_data.json"
+                var request = new XMLHttpRequest();
+                request.open("get", url);
+                request.send(null);
+                request.onload = function () {
+                    if (request.status == 200) {
+                        try {
+                            map_data = JSON.parse(request.responseText);
+                            render_map();
+                        } catch(e) {
+                            console.log(e);
+                            alert("解析地图数据出错");
+                        }
+                    } else {
+                        alert("获取地图数据出错");
+                    }
+                }
+            }
+
+            function render_map() {
 
                 // 构建地图遮挡关系
                 var mask_data = [];
@@ -134,8 +150,11 @@
                     }
                     mask_data.push(rows);
                 }
-                const layers = map_data['layers'];
                 const level_data = map_data['levelData'];
+                var layers = Object.keys(level_data);
+                layers.sort(function(a, b) {
+                    return parseInt(a) - parseInt(b);
+                })
                 for (let i = 0; i < layers.length; i++) {
                     var layer = layers[i];
                     var block_datas = level_data[layer];
@@ -259,9 +278,9 @@
                     update_block_material(block_object);
                 }
 
-                if (map_data['operations'] != null) {
-
-                    // 高亮指示器
+                // 如果有解题步骤
+                if (has_solve_steps()) {
+                    // 添加高亮指示器
                     geometry = new THREE.BoxGeometry(8, 2, 8);
                     const material = new THREE.MeshBasicMaterial({color:0xff0000, opacity:0.6, transparent:true})
                     highlight_mesh = new THREE.Mesh(geometry, material);
@@ -273,6 +292,7 @@
                     scene.add(highlight_mesh);
                     update_highlight_mesh();
 
+                    // 显示解题按钮
                     document.getElementById('auto_solve').text = "【自动解答】";
                     document.getElementById('single_step_solve').text = "【单步解答】";
                 }
@@ -326,7 +346,7 @@
                     if (block_data.is_slot) {
                         return;
                     }
-                    if (map_data['operations'] != null) {
+                    if (has_solve_steps()) {
                         alert("有解的情况禁止手动移除方块，不然把解答途中的方块移除掉会导致局面出现问题。");
                         return;
                     }
@@ -433,9 +453,20 @@
                 }
             }
 
+            // 是否包含解题步骤
+            function has_solve_steps() {
+                if (map_data['operations'] == null) {
+                    return false;
+                }
+                if (map_data['operations'].length == 0) {
+                    return false;
+                }
+                return true;
+            }
+
             // 更新高亮方块位置
             function update_highlight_mesh() {
-                if (map_data['operations'] == null) {
+                if (!has_solve_steps()) {
                     return;
                 }
                 if (solve_index < map_data['operations'].length) {
@@ -482,7 +513,7 @@
 
             // 单步解答
             function single_step_solve() {
-                if (map_data['operations'] == null) {
+                if (!has_solve_steps()) {
                     return;
                 }
                 if (solve_index >= map_data['operations'].length) {

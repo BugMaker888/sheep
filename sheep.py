@@ -85,9 +85,6 @@ class Sheep():
         layers = list(level_data.keys())
         layers.sort(key=lambda x: int(x))
 
-        # 为了方便three.js按顺序读取层数，所以将层数保存起来
-        map_data["layers"] = layers
-
         # 将打乱后的图案按顺序填充到每个方块的"type"字段里
         index = 0
         for layer in layers:
@@ -97,10 +94,12 @@ class Sheep():
                 block_data["type"] = block_types[index]
                 index += 1
 
+        # 加上解答字段
+        map_data["operations"] = []
+
         # 保存地图数据
-        data_string = f"const map_data = {json.dumps(map_data, indent=4)};"
-        with open("./html/map_data.js", "w") as f:
-            f.write(data_string)
+        with open("./html/map_data.json", "w") as f:
+            f.write(json.dumps(map_data, indent=4))
             f.close()
 
         print("==========================================")

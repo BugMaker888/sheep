@@ -98,7 +98,7 @@ mitmweb -p 6666 -s sheep.py
 
 ### 五、游戏数据
 
-文件`html/map_data.js`里面保存着游戏的关卡数据。
+文件`html/map_data.json`里面保存着游戏的关卡数据。
 
 大致说明一下字段的含义：
 
