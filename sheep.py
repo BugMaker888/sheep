@@ -18,7 +18,7 @@ class Sheep():
     def response(self, flow):
         """ 接口响应方法 """
         if "game/map_info_ex" in flow.request.path or \
-           "topic/game_start" in flow.request.path:
+           "tag/game/start" in flow.request.path:
             # 获取地图信息
             response = json.loads(flow.response.content)
             self.make_map_data(response["data"])
