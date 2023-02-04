@@ -1,6 +1,7 @@
 from mitmproxy import ctx
+from protobuf import sheep_pb2
+from google.protobuf import json_format
 import requests
-import datetime
 import execjs
 import json
 import os
@@ -17,9 +18,13 @@ class Sheep():
 
     def response(self, flow):
         """ 接口响应方法 """
-        if "game/map_info_ex" in flow.request.path or \
-           "tag/game/start" in flow.request.path:
-            # 获取地图信息
+        game_start_pathes = [
+            "game/map_info_ex",
+            "topic/game_start",
+            "tag/game/start",
+            "world/game_start",
+        ]
+        if any([x in flow.request.path for x in game_start_pathes]):
             response = json.loads(flow.response.content)
             self.make_map_data(response["data"])
 
@@ -42,17 +47,27 @@ class Sheep():
         # 从服务器请求地图数据
         try:
             print("从服务器请求地图数据")
-            map_data_url = f"https://cat-match-static.easygame2021.com/maps/{level2_map_md5}.txt"
+            map_data_url = f"https://cat-match-static.easygame2021.com/maps/{level2_map_md5}.map"
             sesstion = requests.Session()
             sesstion.trust_env = False
             response = sesstion.get(map_data_url, verify=False, timeout=10)
-            map_data = response.json()
+            map_data = self.decode_bin_map_data(response.content)
             with open(map_data_path, "w") as f:
                 f.write(json.dumps(map_data, indent=4))
                 f.close()
             return map_data
         except Exception as e:
             print(e)
+
+    def decode_bin_map_data(self, bin_map_data):
+        """ 二进制地图数据转JSON """
+        game_map = sheep_pb2.GameMap()
+        game_map.ParseFromString(bin_map_data[21:])
+        map_data = json.loads(json_format.MessageToJson(game_map))
+        level_data = map_data["levelData"]
+        for level in level_data:
+            level_data[level] = level_data[level].pop("node", [])
+        return map_data
 
     def make_map_data(self, map_info):
         """ 制作地图数据 """
@@ -89,7 +104,7 @@ class Sheep():
         index = 0
         for layer in layers:
             for block_data in level_data[layer]:
-                if block_data["type"] > 0:
+                if block_data.get("type", 0) > 0:
                     continue
                 block_data["type"] = block_types[index]
                 index += 1

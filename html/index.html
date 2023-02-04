@@ -71,7 +71,7 @@
             var map_data;
 
             // 显示解答步骤的变量
-            var block_objects = {}
+            var block_objects = {};
             var solve_index = 0;
             var highlight_mesh = null;
             var solve_interval = null;
@@ -159,6 +159,8 @@
                     var block_datas = level_data[layer];
                     for (let j = 0; j < block_datas.length; j++) {
                         var block_data = block_datas[j];
+                        block_data.rowNum = block_data.rowNum || 0;
+                        block_data.rolNum = block_data.rolNum || 0;
                         counter[block_data.type] += 1;
                         block_data.pre_blocks = [];     // 遮挡住的方块
                         block_data.next_blocks = [];    // 被遮挡的方块
